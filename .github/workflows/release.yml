@@ -41,7 +41,7 @@ jobs:
         run: npx semantic-release
 
       - name: Install Vercel CLI
-        run: npm install -g vercel@58.4.4
+        run: npm install -g vercel@62.0.0
 
       - name: Pull Vercel environment (production)
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
