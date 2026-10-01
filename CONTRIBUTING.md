@@ -161,6 +161,7 @@ When you do add a real value, cite where it came from — a source note next to 
 
 ## Community
 
+- **Facebook:** https://www.facebook.com/betterpuertoprincesa
 - **Discord:** https://discord.com/invite/mHtThpN8bT (BetterGov.ph)
 
 ## Questions?
