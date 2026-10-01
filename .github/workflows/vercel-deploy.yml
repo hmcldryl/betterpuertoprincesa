@@ -10,6 +10,10 @@ concurrency:
   group: vercel-deploy-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 jobs:
   deploy-preview:
     if: github.event_name == 'pull_request'
