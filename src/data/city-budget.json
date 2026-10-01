@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "title": "Puerto Princesa City FY2026 Budget",
+    "description": "Official appropriations by sector, National Tax Allotment, and disaster fund set-aside for the City Government of Puerto Princesa.",
+    "year": 2026,
+    "source": "FY2026 Annual Budget Report, City Government of Puerto Princesa (Full Disclosure Board)",
+    "sourceUrl": "https://puertoprincesa.ph/wp-content/uploads/2026/01/2026-Annual-Budget-Report-ABR-Annual.xlsx"
+  },
+  "totalAppropriations": 6541819390.62,
+  "totalCurrentOperatingExpenditures": 4757354624,
+  "totalCapitalOutlay": 1537423802,
+  "sectors": [
+    { "name": "Social Services", "amount": 2369629844 },
+    { "name": "Economic Services", "amount": 2321662110 },
+    { "name": "General Public Services", "amount": 1603536472 },
+    { "name": "Other Services (incl. debt service)", "amount": 246990964.62 },
+    { "name": "Economic Enterprise", "amount": 82901568 }
+  ],
+  "nationalTaxAllotment": {
+    "developmentFund20Percent": 1105569228,
+    "estimatedTotal": 5527846140,
+    "note": "Total NTA estimated by dividing the mandatory 20% Development Fund set-aside by 0.20, since the workbook itemizes the set-aside but not the gross NTA figure."
+  },
+  "disasterFund": {
+    "name": "Local Disaster Risk Reduction and Management Fund (LDRRMF)",
+    "percentOfNTA": 5,
+    "amount": 326347757
+  }
+}

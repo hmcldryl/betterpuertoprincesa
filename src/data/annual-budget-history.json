@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Puerto Princesa City Annual Budget History",
+    "description": "Total new appropriations approved by the City Government of Puerto Princesa, by fiscal year.",
+    "source": "Annual Budgets and Annual Budget Report, City Government of Puerto Princesa (Full Disclosure Board)",
+    "sourceUrl": "https://puertoprincesa.ph/full-disclosure-government-transparency-new-v2/",
+    "note": "2022's source workbook has a broken grand-total cell (a display-overflow artifact, not a real value); that year's figure is computed by summing its sectoral breakdown instead. Budgets do not always increase year over year — dips in 2021 and 2023 reflect real swings in one-time/supplemental appropriations, not a data error."
+  },
+  "data": [
+    { "year": 2019, "totalAppropriations": 3271364720.51 },
+    { "year": 2020, "totalAppropriations": 3786206613 },
+    { "year": 2021, "totalAppropriations": 3723641460.7 },
+    { "year": 2022, "totalAppropriations": 5312628319.22 },
+    { "year": 2023, "totalAppropriations": 4660335772.64 },
+    { "year": 2024, "totalAppropriations": 5056388961.51 },
+    { "year": 2025, "totalAppropriations": 5804715494.99 },
+    { "year": 2026, "totalAppropriations": 6541819390.62 }
+  ]
+}

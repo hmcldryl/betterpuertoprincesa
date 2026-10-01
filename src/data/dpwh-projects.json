@@ -1,0 +1,330 @@
+{
+  "metadata": {
+    "title": "DPWH Infrastructure Projects — Puerto Princesa City",
+    "description": "Roads, bridges, buildings, flood control, and water system projects located within Puerto Princesa City, implemented by DPWH Palawan District Engineering Offices.",
+    "source": "DPWH project database (api.dpwh.bettergov.ph)",
+    "sourceUrl": "https://api.dpwh.bettergov.ph/projects?search=Puerto+Princesa+City&province=Palawan",
+    "browseAllUrl": "https://transparency.bettergov.ph/dpwh?q=Puerto+Princesa+City&provinces=Palawan+1st+DEO,Palawan+2nd+DEO,Palawan+3rd+DEO",
+    "browseFloodControlUrl": "https://transparency.bettergov.ph/dpwh?q=Puerto+Princesa+City&provinces=Palawan+1st+DEO,Palawan+2nd+DEO,Palawan+3rd+DEO&categories=Flood+Control+and+Drainage",
+    "asOf": "2026-08-03",
+    "note": "Filtered to projects whose description explicitly names \"Puerto Princesa City\"; excludes projects that merely pass through the city along corridors named after it (e.g. Puerto Princesa North/South Road) but are physically located in other municipalities. Only the 5 highest-cost projects per category are itemized below; category totals reflect all matching projects, including ones still at the procurement stage with no awarded contract cost yet."
+  },
+  "totalProjects": 652,
+  "totalBudget": 7558160808.65,
+  "categories": [
+    {
+      "name": "Roads",
+      "count": 219,
+      "totalBudget": 4216559560.27
+    },
+    {
+      "name": "Buildings and Facilities",
+      "count": 283,
+      "totalBudget": 1688665242.11
+    },
+    {
+      "name": "Bridges",
+      "count": 90,
+      "totalBudget": 1011277218.03
+    },
+    {
+      "name": "Flood Control and Drainage",
+      "count": 38,
+      "totalBudget": 583267851.59
+    },
+    {
+      "name": "Water Provision and Storage",
+      "count": 20,
+      "totalBudget": 58390936.65
+    }
+  ],
+  "projects": [
+    {
+      "name": "Preventive Maintenance - Puerto Princesa North Rd, K0003+(-184) - K0004+371, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Roads",
+      "cost": 120162448.24,
+      "status": "Completed",
+      "contractor": "Ar Lustre Construction Corporation (Formerly:a.r. Lustre Jr. Construction)",
+      "year": "2025"
+    },
+    {
+      "name": "Preventive Maintenance of Road: Asphalt Overlay - Puerto Princesa South Rd, K0005+000 - K0007+081, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Roads",
+      "cost": 114598574.51,
+      "status": "Completed",
+      "contractor": "T. N. Ramos Construction & Development Corp.",
+      "year": "2024"
+    },
+    {
+      "name": "Rehabilitation/ Reconstruction/ Upgrading of Damaged Paved Roads - Puerto Princesa South Rd, K0001+402 -  K0002+737, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Roads",
+      "cost": 110918275.57,
+      "status": "On-Going",
+      "contractor": "Macasaet Builders and Trading (37440) / Palbic Construction and Supply",
+      "year": "2025"
+    },
+    {
+      "name": "Access Road Leading to Mangingisda Seaport, 00+000.00 - 00+900.70, 00+920.47 - 03+498.98, 04+784.92 - 04+938, Barangay Mangingisda, Puerto Princesa City",
+      "location": "Barangay Mangingisda",
+      "category": "Roads",
+      "cost": 106789790.9,
+      "status": "On-Going",
+      "contractor": "Ypr Gen. Contractor and Construction Supply Inc. ([revoked] 45002)",
+      "year": "2025"
+    },
+    {
+      "name": "Cluster 1: Const. of Road with Drainage System in Puerto Princesa City, Palawan, 1.1: Const. of Road with Drainage Leading to San Jose New Market, Sta. 0+000-STA. 0+766.15; 1.2: Const. of Road with Drainage System, Brgy. San Miguel, Sta. 0+000-STA. 1+540,",
+      "location": "Barangay San Miguel",
+      "category": "Roads",
+      "cost": 105239246.98,
+      "status": "Completed",
+      "contractor": "Katha Builders & Supplies Inc.",
+      "year": "2022"
+    },
+    {
+      "name": "Construction of DPWH Palawan 3RD DEO Annex Building, Puerto Princesa City, Palawan",
+      "location": "Puerto Princesa City",
+      "category": "Buildings and Facilities",
+      "cost": 57900000,
+      "status": "Completed",
+      "contractor": "T. N. Ramos Construction & Development Corp.",
+      "year": "2023"
+    },
+    {
+      "name": "Construction of Senior High School Classrooms, (2-4STY16CL) Palawan National School, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Buildings and Facilities",
+      "cost": 53631065.7,
+      "status": "Completed",
+      "contractor": "E.v. Villaos Trading & Construction",
+      "year": "2016"
+    },
+    {
+      "name": "Construction of Multi-Purpose Building for Rehabilitation and Recovery COVID-19 Facilities, Puerto Princesa City, Palawan",
+      "location": "Puerto Princesa City",
+      "category": "Buildings and Facilities",
+      "cost": 53073002.36,
+      "status": "Completed",
+      "contractor": "E.p.l. General Construction and Supply Inc.",
+      "year": "2022"
+    },
+    {
+      "name": "Construction of Classrooms (4STY24CL) School Building, San Jose NHS, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Buildings and Facilities",
+      "cost": 44562267.16,
+      "status": "Completed",
+      "contractor": "Ar Lustre Construction Corporation (Formerly:a.r. Lustre Jr. Construction)",
+      "year": "2017"
+    },
+    {
+      "name": "Construction of Detachment Naval Coastal Base, Oyster Bay, Brgy. Bahile, Puerto Princesa City",
+      "location": "Barangay Bahile",
+      "category": "Buildings and Facilities",
+      "cost": 36259943.02,
+      "status": "Completed",
+      "contractor": "Pascal Construction",
+      "year": "2023"
+    },
+    {
+      "name": "Replacement of Permanent Weak Bridge - Concepcion Br. (B00101PW) along Puerto Princesa North Road, K0066+678.10, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Bridges",
+      "cost": 115799983.24,
+      "status": "Completed",
+      "contractor": "Mamsar Construction and Industrial Corporation (15885) / Smmiley Builders and Trading",
+      "year": "2023"
+    },
+    {
+      "name": "Widening of Permanent Bridges - Gen. Luna Br. 2 (B00175PW)  along Puerto Princesa South Rd, K0017+528, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Bridges",
+      "cost": 98400992.15,
+      "status": "On-Going",
+      "contractor": "Ritche-Nathalie Development Corporation (Formerly: Ritche-Nathalie  Builders and Gen. Merchandise) (27501) / Victoria Development and Ventures Corp. (For: Victoria Dev't and Const. Corp.)",
+      "year": "2025"
+    },
+    {
+      "name": "Replacement of Permanent Weak Bridge - San Rafael Br. (B00099PW) along Puerto Princesa North Road, K0062+731.00, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Bridges",
+      "cost": 92636769.62,
+      "status": "Completed",
+      "contractor": "Seven Digit Construction and Trucking Services Corp. (Formerly: Seven Digit Construction & Supplies) (25471) / Yurich Builders and Construction Supply Inc.",
+      "year": "2023"
+    },
+    {
+      "name": "Construction of Tandayag Parallel Bridge, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Bridges",
+      "cost": 61545684.86,
+      "status": "Completed",
+      "contractor": "Cavdeal-Cavite Ideal Int'l. Const. & Dev't. Corp.",
+      "year": "2017"
+    },
+    {
+      "name": "Cluster 3: Widening of Permanent Bridges along Puerto Princesa North Road, 3.1. Bacungan Bridge 1 (B00084PW) along Ppnr, KO023+449; 3.2: Bacungan Bridge 2 (B00086PW) along Ppnr, KO025+134, Puerto Princesa City, Palawan",
+      "location": "Puerto Princesa City",
+      "category": "Bridges",
+      "cost": 54092887.32,
+      "status": "Completed",
+      "contractor": "One Hundred Percent Construction and Development Corporation (Formerly:bct Trading & Construction)",
+      "year": "2022"
+    },
+    {
+      "name": "Construction of Flood Control Structure, Iwahig River, Barangay Iwahig, Puerto Princesa City, Palawan",
+      "location": "Barangay Iwahig",
+      "category": "Flood Control and Drainage",
+      "cost": 72123774,
+      "status": "On-Going",
+      "contractor": "Wawao Builders",
+      "year": "2025"
+    },
+    {
+      "name": "Repair/rehabilitation/improvement of Roads with Slips, Slope Collapse and Landslides Along: 1. Puerto Princesa South Road Jct-Napsan-Apurawan Road, Puerto Princesa City, Palawan: a. K0039+200 - K0039+226, B. K0035+988 - K0036+033, K0036+110 - K0036+133.40",
+      "location": "Puerto Princesa City",
+      "category": "Flood Control and Drainage",
+      "cost": 54533964.72,
+      "status": "Completed",
+      "contractor": "Goldrock Construction & Development Corp.",
+      "year": "2019"
+    },
+    {
+      "name": "Construction of Flood Control Structure, San Rafael River, Barangay San Rafael, Puerto Princesa City, Palawan",
+      "location": "Barangay San Rafael",
+      "category": "Flood Control and Drainage",
+      "cost": 48695213.19,
+      "status": "On-Going",
+      "contractor": "Mamsar Construction and Industrial Corporation",
+      "year": "2025"
+    },
+    {
+      "name": "Improvement/construction of Flood Control Mitigation Structure and Drainage System along Puerto Princesa North Road, K0005+(-100)K0006+900, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Flood Control and Drainage",
+      "cost": 48602872.76,
+      "status": "Completed",
+      "contractor": "L. B. Leoncio Trading and Construction Corporation (Formerly: L.b. Leoncio Trading & Construction)",
+      "year": "2017"
+    },
+    {
+      "name": "Construction of Flood Control and Drainage System along Puerto Princesa North Road, K0003+(-100) - K0004+885, Puerto Princesa City",
+      "location": "Puerto Princesa City",
+      "category": "Flood Control and Drainage",
+      "cost": 42447548.21,
+      "status": "Completed",
+      "contractor": "Ivy Michelle Construction and Trading Inc. (Formerly:ivy Michelle Trading & Contruction)",
+      "year": "2017"
+    },
+    {
+      "name": "Construction of Solar Water System, Barangay Binduyan, Puerto Princesa City, Palawan",
+      "location": "Barangay Binduyan",
+      "category": "Water Provision and Storage",
+      "cost": 9799887.89,
+      "status": "Completed",
+      "contractor": "Yurich Builders and Construction Supply Inc.",
+      "year": "2023"
+    },
+    {
+      "name": "Construction of Solar Water System, Barangay Langogan, Puerto Princesa City, Palawan",
+      "location": "Barangay Langogan",
+      "category": "Water Provision and Storage",
+      "cost": 9799842.96,
+      "status": "Completed",
+      "contractor": "Smmiley Builders and Trading",
+      "year": "2023"
+    },
+    {
+      "name": "Construction of Water System Level III at Barangay Cabayugan, Puerto Princesa City",
+      "location": "Barangay Cabayugan",
+      "category": "Water Provision and Storage",
+      "cost": 4947049.75,
+      "status": "Completed",
+      "contractor": "Maintin Construction & Supply",
+      "year": "2022"
+    },
+    {
+      "name": "Construction of Water System Level III at Barangay Concepcion, Puerto Princesa City, Palawan",
+      "location": "Barangay Concepcion",
+      "category": "Water Provision and Storage",
+      "cost": 4879607.19,
+      "status": "Completed",
+      "contractor": "Rak Trading and Construction",
+      "year": "2022"
+    },
+    {
+      "name": "Construction (Completion) of Water Supply System Level II,  Brgy. Buenavista, Puerto Princesa City",
+      "location": "Barangay Buenavista",
+      "category": "Water Provision and Storage",
+      "cost": 3121258.38,
+      "status": "Completed",
+      "contractor": "New Space Trading and Construction Corp. (Formerly: Kudz Trading & Construction Supply)",
+      "year": "2019"
+    }
+  ],
+  "byYear": {
+    "Roads": [
+      { "year": 2016, "totalBudget": 241127452.65 },
+      { "year": 2017, "totalBudget": 525353352.05 },
+      { "year": 2018, "totalBudget": 400751092.82 },
+      { "year": 2019, "totalBudget": 131229574.15 },
+      { "year": 2020, "totalBudget": 399553826.19 },
+      { "year": 2021, "totalBudget": 265281543.26 },
+      { "year": 2022, "totalBudget": 804443950.13 },
+      { "year": 2023, "totalBudget": 428547482.97 },
+      { "year": 2024, "totalBudget": 448387309.1 },
+      { "year": 2025, "totalBudget": 571883976.95 }
+    ],
+    "Buildings and Facilities": [
+      { "year": 2016, "totalBudget": 293836412.13 },
+      { "year": 2017, "totalBudget": 155179811.04 },
+      { "year": 2018, "totalBudget": 205525341.25 },
+      { "year": 2019, "totalBudget": 146514954.57 },
+      { "year": 2020, "totalBudget": 120980812.82 },
+      { "year": 2021, "totalBudget": 139326545.37 },
+      { "year": 2022, "totalBudget": 146185395.66 },
+      { "year": 2023, "totalBudget": 197821216.65 },
+      { "year": 2024, "totalBudget": 148871539.85 },
+      { "year": 2025, "totalBudget": 134423212.77 }
+    ],
+    "Bridges": [
+      { "year": 2016, "totalBudget": 66826896.62 },
+      { "year": 2017, "totalBudget": 145674712.24 },
+      { "year": 2018, "totalBudget": 78813381.13 },
+      { "year": 2019, "totalBudget": 0 },
+      { "year": 2020, "totalBudget": 206933980.81 },
+      { "year": 2021, "totalBudget": 101141709.07 },
+      { "year": 2022, "totalBudget": 54092887.32 },
+      { "year": 2023, "totalBudget": 213630752.85 },
+      { "year": 2024, "totalBudget": 0 },
+      { "year": 2025, "totalBudget": 144162897.99 }
+    ],
+    "Flood Control and Drainage": [
+      { "year": 2016, "totalBudget": 0 },
+      { "year": 2017, "totalBudget": 146683726.44 },
+      { "year": 2018, "totalBudget": 28423219.86 },
+      { "year": 2019, "totalBudget": 54533964.72 },
+      { "year": 2020, "totalBudget": 0 },
+      { "year": 2021, "totalBudget": 4453510.08 },
+      { "year": 2022, "totalBudget": 13416165.83 },
+      { "year": 2023, "totalBudget": 9799590 },
+      { "year": 2024, "totalBudget": 190468687.99 },
+      { "year": 2025, "totalBudget": 135488986.67 }
+    ],
+    "Water Provision and Storage": [
+      { "year": 2016, "totalBudget": 1939861.36 },
+      { "year": 2017, "totalBudget": 9514762.72 },
+      { "year": 2018, "totalBudget": 5910814.07 },
+      { "year": 2019, "totalBudget": 7556065.86 },
+      { "year": 2020, "totalBudget": 0 },
+      { "year": 2021, "totalBudget": 1884550.43 },
+      { "year": 2022, "totalBudget": 11985151.36 },
+      { "year": 2023, "totalBudget": 19599730.85 },
+      { "year": 2024, "totalBudget": 0 },
+      { "year": 2025, "totalBudget": 0 }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "hero": {
+    "subtitle": "Isang portal na pinapatakbo ng komunidad para sa impormasyon tungkol sa Pamahalaang Lungsod ng Puerto Princesa"
+  },
+  "landmark": {
+    "calloutText": "Alamin pa ang tungkol sa\n\"Prinsesa ng Baybay\"",
+    "title": "Ang Prinsesa ng Baybay",
+    "subtitle": "Ang kwento sa likod ng estatwa sa Puerto Princesa Baywalk.",
+    "historyHeading": "Kasaysayan",
+    "triviaHeading": "Alam Ba Ninyo?",
+    "sourcesHeading": "Mga Pinagmulan"
+  },
+  "services": {
+    "title": "Mga Serbisyo at Impormasyon",
+    "description": "Mabilis at madaling ma-access ang mga opisyal na serbisyo ng pamahalaan. Hanapin ang kailangan mo para sa pagkamamamayan, negosyo, edukasyon, at marami pa.",
+    "viewAllCard": "Tingnan Lahat ng Serbisyo at Impormasyon",
+    "loading": "Naglo-load ng mga serbisyo...",
+    "categoryNotFoundTitle": "Hindi natagpuan ang kategorya",
+    "categoryNotFoundDescription": "Ang kategoryang hinahanap mo ay hindi umiiral."
+  },
+  "governmentActivity": {
+    "title": "Mga Gawain ng Pamahalaan",
+    "description": "Manatiling updated sa pinakabagong mga gawain at anunsyo ng pamahalaan.",
+    "viewAllCard": "Tingnan Lahat ng Gawain ng Pamahalaan"
+  },
+  "document": {
+    "loading": "Naglo-load ng dokumento...",
+    "notFoundTitle": "Hindi Natagpuan ang Dokumento"
+  },
+  "statistics": {
+    "title": "Estadistika ng Lungsod",
+    "subtitle": "Demograpiya, kompetitibidad, at datos pinansyal para sa {{city}}, {{province}}.",
+    "populationLabel": "Populasyon",
+    "barangaysLabel": "Mga Barangay",
+    "administrativeUnits": "Mga Yunit Administratibo",
+    "landAreaLabel": "Lawak ng Lupa (km²)",
+    "landAreaShortLabel": "Lawak ng Lupa",
+    "totalCityArea": "Kabuuang Sukat ng Lungsod",
+    "incomeClassLabel": "Klase ng Kita",
+    "incomeClassificationLabel": "Klasipikasyon ng Kita",
+    "competitivenessTitle": "Indeks ng Kompetitibidad",
+    "overallRank": "Pangkalahatang ranggo",
+    "cmciYear": "CMCI",
+    "score": "Iskor",
+    "source": "Pinagmulan",
+    "fiscalTitle": "Transparensiyang Piskal",
+    "annualBudget": "Taunang Badyet",
+    "balancedBudgetNote": "Kabuuang kita = kabuuang gastos (balanseng badyet)",
+    "barangaysHeading": "Mga Barangay ({{count}})",
+    "infrastructureTitle": "Mga Proyektong Imprastruktura",
+    "infrastructureDescription": "{{count}} proyekto sa kontrol ng baha at drainage (₱{{cost}} kabuuan), ipinatutupad ng {{agency}}. Ang pinakamalalaking proyekto lamang ang nakalista sa ibaba; hindi na-detalye nang isa-isa ang iba sa magagamit na ulat.",
+    "tableProject": "Proyekto",
+    "tableLocation": "Lokasyon",
+    "tableCost": "Halaga",
+    "tableStatus": "Katayuan",
+    "contractorLabel": "Kontratista",
+    "ongoingUnspecified": "Isinasagawa/hindi tinukoy",
+    "viewFullProfile": "Tingnan ang Buong Profile"
+  },
+  "glance": {
+    "title": "Puerto Princesa sa Isang Sulyap"
+  },
+  "news": {
+    "title": "Balita at mga Update",
+    "subtitle": "Pinakabagong mga anunsyo mula sa Pamahalaang Lungsod ng Puerto Princesa.",
+    "viewAll": "Tingnan Lahat ng Balita"
+  },
+  "hotlines": {
+    "title": "Mga Hotline sa Emergency"
+  },
+  "weatherMap": {
+    "title": "Panahon at Mapa",
+    "weatherHeading": "Panahon sa Puerto Princesa",
+    "mapHeading": "Mapa",
+    "today": "Ngayon",
+    "weekdays": ["Lin", "Lun", "Mar", "Miy", "Huw", "Biy", "Sab"]
+  },
+  "directory": {
+    "title": "Opisyal na Direktoryo",
+    "subtitle": "Hanapin ang impormasyon sa pakikipag-ugnayan sa mga opisyal, opisina, at barangay ng Puerto Princesa.",
+    "viewDirectory": "Tingnan ang Direktoryo"
+  },
+  "footer": {
+    "copyright": "© 2026 BetterPuertoPrincesa. Ang lahat ng nilalaman ay pampublikong domain maliban kung nakasaad."
+  },
+  "navbar": {
+    "home": "Tahanan",
+    "government": "Pamahalaan",
+    "services": "Mga Serbisyo",
+    "hotlines": "Mga Hotline",
+    "holidays": "Mga Pista Opisyal",
+    "statistics": "Estadistika",
+    "news": "Balita",
+    "miningwatch": "Pagbabantay sa Pagmimina"
+  }
+}

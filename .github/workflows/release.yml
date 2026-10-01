@@ -1,0 +1,34 @@
+name: Release
+
+on:
+  push:
+    branches: [main, develop]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Admin PAT so the version-bump commit can push directly to a
+          # protected branch (the default GITHUB_TOKEN acts as github-actions[bot],
+          # which branch protection does not exempt).
+          token: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run semantic-release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}

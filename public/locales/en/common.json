@@ -1,0 +1,145 @@
+{
+  "hero": {
+    "subtitle": "A community-run portal to find information of the Puerto Princesa City Government"
+  },
+  "landmark": {
+    "calloutText": "Know more about the\n\"Prinsesa ng Baybay\"",
+    "title": "Ang Prinsesa ng Baybay",
+    "subtitle": "The story behind the statue on the Puerto Princesa Baywalk.",
+    "historyHeading": "History",
+    "triviaHeading": "Did You Know?",
+    "sourcesHeading": "Sources"
+  },
+  "miningWatch": {
+    "title": "Mining Watch",
+    "subtitle": "Tracking how mining is affecting Palawan's environment, communities, and Indigenous peoples.",
+    "disclaimer": "This page is compiled from independent journalism and human-rights/environmental organizations for public awareness. It is not an official statement or position of the City Government of Puerto Princesa.",
+    "contextHeading": "Why This Matters",
+    "mapHeading": "Where Mining Is Happening",
+    "mapCaveat": "Pins mark known mining sites at the barangay/municipality level, sourced from official MGB records and cited news reporting below — they are approximate locations, not surveyed concession boundaries. Tap a pin for details and sources.",
+    "forestLossHeading": "Tree Cover Loss by Dominant Driver",
+    "forestLossSubtitle": "What's actually clearing forest across Palawan province, 2001–2025, by dominant cause — from permanent conversion (agriculture, mining, settlements) to temporary disturbances (logging, fire) that can eventually regrow.",
+    "forestLossMiningNote": "\"Hard commodities\" — mining and energy infrastructure — clears the least total area of any driver province-wide: about 1,257 hectares of roughly 224,000 lost since 2001, behind even permanent agriculture and shifting cultivation, which dominate by a wide margin. That number likely understates mining's real footprint: the 11 companies now operating in Palawan hold roughly 29,430 hectares in concessions, most not yet actively cleared, and mining roads open remote forest to logging and farming by others — clearing this chart attributes to those drivers instead, not to mining. Hectares aside, mining also targets old-growth primary forest and protected ancestral domains specifically (Mt. Mantalingahan, Bataraza, Brooke's Point — see the map above), and its damage reaches beyond the cleared footprint through water pollution, like the hexavalent chromium contamination documented near Rio Tuba below.",
+    "forestLossSourceLabel": "Source",
+    "articlesHeading": "In the News",
+    "footerNote": "Every article below links to its original, independently published source. If you spot an outdated or broken link, please open an issue on this project's GitHub repository."
+  },
+  "services": {
+    "title": "Services & Information",
+    "description": "Access official government services quickly and easily. Find what you need for citizenship, business, education, and more.",
+    "viewAllCard": "View All Services and Information",
+    "loading": "Loading services...",
+    "categoryNotFoundTitle": "Category not found",
+    "categoryNotFoundDescription": "The category you are looking for does not exist."
+  },
+  "governmentActivity": {
+    "title": "Government Activity",
+    "description": "Stay updated with the latest government activities and announcements.",
+    "viewAllCard": "View All Government Activities"
+  },
+  "document": {
+    "loading": "Loading document...",
+    "notFoundTitle": "Document Not Found"
+  },
+  "statistics": {
+    "title": "City Statistics",
+    "subtitle": "Demographics, competitiveness, and fiscal data for {{city}}, {{province}}.",
+    "populationLabel": "Population",
+    "barangaysLabel": "Barangays",
+    "administrativeUnits": "Administrative Units",
+    "landAreaLabel": "Land Area (km²)",
+    "landAreaShortLabel": "Land Area",
+    "totalCityArea": "Total City Area",
+    "incomeClassLabel": "Income Class",
+    "incomeClassificationLabel": "Income Classification",
+    "competitivenessTitle": "Competitiveness Index",
+    "overallRank": "Overall rank",
+    "cmciYear": "CMCI",
+    "score": "Score",
+    "source": "Source",
+    "fiscalTitle": "Budget Transparency",
+    "fiscalTeaser": "See Puerto Princesa's full FY2026 budget breakdown, National Tax Allotment, and infrastructure spending.",
+    "viewTransparency": "View Budget Transparency",
+    "barangaysHeading": "Barangays ({{count}})",
+    "barangayMapHeading": "Explore the Barangays",
+    "barangayMapSubtitle": "Hover to preview, click a barangay for its name, or search below.",
+    "searchBarangayPlaceholder": "Search barangay...",
+    "selectedBarangay": "Barangay",
+    "mapHint": "Click any barangay on the map to select it.",
+    "barangayPopulation": "Pop. {{population}} (2024 Census)",
+    "mapSourcesLabel": "Sources",
+    "mapSourceBoundaries": "Barangay boundaries (NAMRIA/PSGC)",
+    "mapSourcePopulation": "Barangay population, 2024 Census (PSA)",
+    "tableProject": "Project",
+    "tableLocation": "Location",
+    "tableCost": "Cost",
+    "tableStatus": "Status",
+    "contractorLabel": "Contractor",
+    "ongoingUnspecified": "Ongoing/unspecified",
+    "viewFullProfile": "View Full Profile"
+  },
+  "transparency": {
+    "title": "Budget Transparency",
+    "subtitle": "Puerto Princesa City's official budget and National Tax Allotment, sourced from the City Government's Full Disclosure documents, plus DPWH infrastructure spending sourced from DPWH's public project database.",
+    "budgetTitle": "FY{{year}} City Budget",
+    "totalAppropriations": "Total Appropriations",
+    "currentOperating": "Current Operating Expenditures",
+    "capitalOutlay": "Capital Outlay",
+    "sectorTitle": "Appropriations by Sector",
+    "ntaTitle": "National Tax Allotment (NTA)",
+    "ntaNote": "Estimated from the mandatory 20% Development Fund set-aside, since the city's budget workbook itemizes the set-aside but not the gross NTA figure.",
+    "ldrrmfNote": "{{percent}}% of NTA, set aside for disaster risk reduction and management.",
+    "annualBudgetTitle": "Annual Budget Allocation",
+    "annualBudgetDescription": "How Puerto Princesa's total approved budget has changed year over year.",
+    "byYearCaption": "Budget by year (2016–2025), summed across every matching project that year — not just the ones itemized below.",
+    "floodControlTitle": "Flood Control & Drainage Projects",
+    "floodControlDescription": "{{count}} flood control and drainage projects located in Puerto Princesa City (₱{{cost}} total), implemented by DPWH.",
+    "infrastructureTitle": "Other Infrastructure Projects",
+    "infrastructureDescription": "{{count}} additional DPWH-implemented projects located in Puerto Princesa City (₱{{cost}} total), across roads, bridges, buildings, and water systems.",
+    "categoryProjectCount": "{{count}} projects",
+    "infrastructureNote": "Only the 5 highest-cost projects per category are itemized above; category totals and counts cover every matching project, including ones still at the procurement stage with no awarded contract cost yet.",
+    "viewAllProjects": "View all {{count}} projects on transparency.bettergov.ph",
+    "asOf": "as of",
+    "documentsTitle": "Official Source Documents",
+    "documentsSubtitle": "Primary documents published by the City Government of Puerto Princesa's Full Disclosure Board.",
+    "disclaimerTitle": "About This Data",
+    "disclaimerBody": "Budget figures on this page are sourced directly from Puerto Princesa's official budget documents; infrastructure project figures are sourced from DPWH's public project database. Both are updated periodically, not in real time. Some figures (like the National Tax Allotment total) are derived from other stated figures where the source document doesn't state them outright — see the notes next to each figure for details."
+  },
+  "glance": {
+    "title": "Puerto Princesa at a Glance"
+  },
+  "news": {
+    "title": "News & Updates",
+    "subtitle": "Latest announcements from the City Government of Puerto Princesa.",
+    "viewAll": "View All News"
+  },
+  "hotlines": {
+    "title": "Emergency Hotlines"
+  },
+  "weatherMap": {
+    "title": "Weather & Map",
+    "weatherHeading": "Weather in Puerto Princesa",
+    "mapHeading": "Map",
+    "today": "Today",
+    "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  },
+  "directory": {
+    "title": "Official Directory",
+    "subtitle": "Find contact information for Puerto Princesa officials, offices, and barangays.",
+    "viewDirectory": "View Directory"
+  },
+  "footer": {
+    "copyright": "© 2026 BetterPuertoPrincesa. All content is public domain unless otherwise specified."
+  },
+  "navbar": {
+    "home": "Home",
+    "government": "Government",
+    "services": "Services",
+    "hotlines": "Hotlines",
+    "holidays": "Holidays",
+    "statistics": "Statistics",
+    "transparency": "Transparency",
+    "news": "News",
+    "miningwatch": "Mining Watch"
+  }
+}
