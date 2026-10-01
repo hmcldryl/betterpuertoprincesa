@@ -34,3 +34,7 @@ dist-ssr
 .env.development
 .env.test
 .env.production
+
+# Lockfiles from other package managers (npm is canonical)
+pnpm-lock.yaml
+yarn.lock
