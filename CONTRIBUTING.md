@@ -166,7 +166,7 @@ When you do add a real value, cite where it came from — a source note next to 
 
 ## Questions?
 
-Open an issue or ask on Discord — happy to help.
+Open an issue, message us on Facebook, or ask on the BetterGov.ph Discord — happy to help.
 
 ---
 
