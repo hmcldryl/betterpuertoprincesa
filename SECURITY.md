@@ -32,6 +32,11 @@ Include in your report:
 
 ## Security measures
 
+**Hosting & transport:**
+
+- Hosted on Vercel — HTTPS/TLS and HSTS are enforced by the platform, not custom server config
+- Deploys are gated behind CI (`.github/workflows/ci.yml`) and, for production, [semantic-release](https://semantic-release.gitbook.io/) on `main` (`.github/workflows/release.yml`)
+
 **Application security:**
 
 - No user authentication and no user accounts
@@ -41,7 +46,7 @@ Include in your report:
 
 **Data security:**
 
-- All civic/municipal data is sourced from official government sources or cited public reporting — see comments in `src/data/*.ts` for provenance
+- All civic/municipal data is sourced from official government sources or cited public reporting — see the source notes in `src/data/` for provenance
 - No personally identifiable information (PII) is collected or stored by the site itself
 
 ### Third-party services
@@ -56,23 +61,23 @@ The site has no analytics or tracking script.
 
 ## Best practices for contributors
 
-1. **Never commit secrets** — this project currently requires no API keys or environment variables (see [DEPLOYMENT-GUIDE.md](DEPLOYMENT-GUIDE.md)); if a future change introduces one, it belongs in an untracked `.env.local`, never in code.
+1. **Never commit secrets** — the site currently requires no API keys or environment variables; if a future change introduces one, it belongs in an untracked `.env.local`, never in code.
 2. **Validate inputs** — sanitize anything rendered from user-controllable input (currently minimal, since there are no forms, but keep this in mind for future features).
 3. **HTTPS only** — all external resources (fonts, tiles, APIs) must be loaded over HTTPS.
 4. **Review dependencies** — check `npm audit` before adding new packages.
-5. **Don't bypass hooks** — never use `--no-verify` to skip the pre-commit lint/format hook.
+5. **Don't bypass CI** — never use `--no-verify` to skip git hooks or force a lint/build failure through.
 
 ## Scope
 
 This policy covers:
 
 - The BetterPuertoPrincesa.org website and its GitHub repository
-- Associated build tooling
+- Associated build tooling and GitHub Actions workflows
 
 Out of scope:
 
 - Third-party services listed above (report to them directly)
-- Hosting platform infrastructure (Vercel or wherever the site is deployed)
+- Vercel's own platform infrastructure
 
 ## Contact
 
