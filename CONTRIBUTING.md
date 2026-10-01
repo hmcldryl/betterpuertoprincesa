@@ -27,7 +27,7 @@ Workflow:
 2. Open a PR into `main`. CI (`npm run lint` + `npm run build`) must pass — see `.github/workflows/ci.yml` — and you get an ephemeral Vercel preview URL commented on the PR (`.github/workflows/deploy.yml`).
 3. Merging runs [semantic-release](https://semantic-release.gitbook.io/): bumps the version, writes `CHANGELOG.md`, tags a GitHub Release, and deploys to production (see `.github/workflows/release.yml`).
 
-No manual version bumping — versions derive entirely from commit messages (see below).
+No manual version bumping — versions derive entirely from commit messages (see below). `main` is a protected branch (PR required, the `lint-and-build` check must pass on an up-to-date branch, no force-pushes or deletion) — a PR is the only way in for contributors. Repository admins can bypass it, which is what lets semantic-release push its version-bump commit.
 
 **Never hand-edit `package.json`'s version or push a tag directly to `main`.** If a version needs to jump outside normal bumping, do it as a real commit with a `BREAKING CHANGE:` footer through a normal PR instead, so semantic-release computes it.
 
