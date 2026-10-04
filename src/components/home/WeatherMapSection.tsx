@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import Section from '../ui/Section';
 import { Heading } from '../ui/Heading';
-import PuertoPrincesaMap from './PuertoPrincesaMap';
+import { PuertoPrincesaMap } from '../map/LazyMaps';
 
 const LAT = 9.7392;
 const LON = 118.7353;

@@ -51,11 +51,12 @@ Include in your report:
 
 ### Third-party services
 
-| Service                     | Purpose                    | Data shared                                      |
-| --------------------------- | -------------------------- | ------------------------------------------------ |
-| Open-Meteo API              | Weather widget             | Fixed lat/lon for Puerto Princesa (no user data) |
-| CARTO / OpenStreetMap tiles | Map tiles for the city map | None                                             |
-| Google Fonts CDN (if used)  | Fonts                      | Standard request metadata (IP, user agent)       |
+| Service                                | Purpose                                    | Data shared                                      |
+| -------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
+| Open-Meteo API                         | Weather widget                             | Fixed lat/lon for Puerto Princesa (no user data) |
+| OpenFreeMap tiles (OpenStreetMap data) | Map tiles and fonts for the maps           | None                                             |
+| Global Forest Watch tiles              | Tree cover loss overlay (Mining Watch map) | None                                             |
+| Google Fonts CDN (if used)             | Fonts                                      | Standard request metadata (IP, user agent)       |
 
 The site has no analytics or tracking script.
 
