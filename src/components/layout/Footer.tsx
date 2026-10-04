@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="border-t-4 border-balayong-400 bg-gray-900 text-white">
       <div className="container mx-auto px-4 pt-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
                   <a
                     key={link.label}
                     href={link.href as string}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-balayong-200 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                   <li key={link.label}>
                     <FooterLink
                       href={link.href}
-                      className="text-gray-400 hover:text-white text-sm transition-colors"
+                      className="text-gray-400 hover:text-balayong-200 text-sm transition-colors"
                     >
                       {link.label}
                     </FooterLink>
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-6">
               <a
                 href="https://github.com/hmcldryl/betterpuertoprincesa"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
+                className="text-gray-400 hover:text-balayong-200 text-sm transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >

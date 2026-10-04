@@ -41,6 +41,21 @@
   --color-accent-800: #623700;
   --color-accent-900: #311b00;
 
+  /* Balayong pink — from the blossoms of Puerto Princesa's city tree.
+     The site's local accent alongside the Kapwa primary blue: borders,
+     hover states, highlights. Primary actions and semantic states stay
+     on the Kapwa colors. */
+  --color-balayong-50: #fdf2f6;
+  --color-balayong-100: #fbe3ec;
+  --color-balayong-200: #f7c6d8;
+  --color-balayong-300: #f09dbc;
+  --color-balayong-400: #e66f9b;
+  --color-balayong-500: #d94b7f;
+  --color-balayong-600: #bd3266;
+  --color-balayong-700: #9c2652;
+  --color-balayong-800: #7a1f42;
+  --color-balayong-900: #5a1832;
+
   --color-success-50: #e6f7ef;
   --color-success-100: #ccefdf;
   --color-success-200: #99dfbf;
@@ -112,6 +127,11 @@
 @theme inline {
   --font-sans: var(--font-kapwa-sans);
   --font-mono: var(--font-kapwa-mono);
+}
+
+::selection {
+  background: var(--color-balayong-200);
+  color: var(--color-balayong-900);
 }
 
 /* Constrain .container to match reference layout (Tailwind v4's default

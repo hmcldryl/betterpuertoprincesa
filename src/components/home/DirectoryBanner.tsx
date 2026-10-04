@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 export default function DirectoryBanner() {
   const { t } = useTranslation('common');
   return (
-    <div className="bg-gray-200">
+    <div className="bg-balayong-50">
       <div className="container mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left">
           <h2 className="text-2xl font-bold text-gray-900">
