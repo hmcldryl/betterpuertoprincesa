@@ -12,7 +12,7 @@ import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { PieChart } from '../components/ui/PieChart';
-import PalawanMiningMap from '../components/map/PalawanMiningMap';
+import { PalawanMiningMap } from '../components/map/LazyMaps';
 import { miningNews } from '../data/miningWatch';
 import { palawanForestLossByDriver } from '../data/forestLoss';
 

@@ -9,7 +9,7 @@ Thanks for wanting to help. This is a volunteer-built civic transparency portal 
 - **Tailwind CSS v4** (CSS-first `@theme` config in `src/index.css`) + **`@bettergov/kapwa`** (CC0 design system/component library)
 - **`content/**/_.md`+`_.yaml`** for service and government department pages, **`src/data/`\*\* for statistics, news, hotlines, and budget data — no database, no CMS; matches how BetterGov.ph and other BetterLGU sites store data
 - **i18next** (English/Filipino) with translation JSON loaded from `public/locales/`
-- **Leaflet** + `react-leaflet` for the city map, **Open-Meteo** for live weather
+- **MapLibre GL** + OpenFreeMap vector tiles (no API key) for the maps, **Open-Meteo** for live weather
 - GitHub Actions → Vercel CLI for CI/CD (`.github/workflows/ci.yml`, `deploy.yml`, `release.yml`)
 - Conventional Commits + semantic-release for versioning (see below)
 

@@ -14,9 +14,8 @@ import Section from '../components/ui/Section';
 import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
-import BarangayMap, {
-  type BarangayMapHandle,
-} from '../components/map/BarangayMap';
+import type { BarangayMapHandle } from '../components/map/BarangayMap';
+import { BarangayMap } from '../components/map/LazyMaps';
 import { demographics, competitiveIndex } from '../data/statistics';
 
 const numberFormat = new Intl.NumberFormat('en-US');
