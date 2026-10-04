@@ -41,8 +41,8 @@ export default function AtAGlanceSection() {
 
   return (
     <Section>
-      <div className="flex items-center justify-between mb-6">
-        <Heading level={2} className="!mb-0">
+      <div className="flex items-baseline justify-between mb-6">
+        <Heading level={2} accent className="!mb-0">
           {t('glance.title')}
         </Heading>
         <Link

@@ -101,7 +101,9 @@ export default function WeatherMapSection() {
 
   return (
     <Section>
-      <Heading level={2}>{t('weatherMap.title')}</Heading>
+      <Heading level={2} accent>
+        {t('weatherMap.title')}
+      </Heading>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Weather — 1/4 width */}
         <div className="lg:col-span-1 bg-white rounded-lg border border-gray-200 p-6">

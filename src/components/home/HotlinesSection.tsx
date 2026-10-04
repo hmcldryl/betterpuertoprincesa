@@ -16,7 +16,9 @@ export default function HotlinesSection() {
   const { t } = useTranslation('common');
   return (
     <Section className="!bg-gray-50">
-      <Heading level={2}>{t('hotlines.title')}</Heading>
+      <Heading level={2} accent>
+        {t('hotlines.title')}
+      </Heading>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {hotlines.map(h => {
           const Icon = ICONS[h.label] ?? Phone;

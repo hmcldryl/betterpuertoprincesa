@@ -5,6 +5,8 @@ interface HeadingProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   children: React.ReactNode;
   className?: string;
+  // Short balayong-pink bar under the heading, for top-level page sections.
+  accent?: boolean;
 }
 
 const headingStyles = {
@@ -16,9 +18,19 @@ const headingStyles = {
   6: 'text-sm md:text-base lg:text-lg font-bold mb-4 leading-relaxed',
 };
 
-export function Heading({ level = 1, children, className }: HeadingProps) {
+export function Heading({
+  level = 1,
+  children,
+  className,
+  accent = false,
+}: HeadingProps) {
   const baseClasses = headingStyles[level];
-  const combinedClasses = cn(baseClasses, className);
+  const combinedClasses = cn(
+    baseClasses,
+    accent &&
+      'after:mt-2 after:block after:h-1 after:w-12 after:rounded-full after:bg-balayong-400',
+    className
+  );
 
   const HeadingTag = `h${level}`;
 
