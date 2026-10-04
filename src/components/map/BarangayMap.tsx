@@ -7,14 +7,14 @@ import {
   useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import 'leaflet/dist/leaflet.css';
-import type {
-  Map as LeafletMap,
-  LatLngBoundsExpression,
-  Layer,
-  PathOptions,
-} from 'leaflet';
-import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import {
+  Popup,
+  type ExpressionSpecification,
+  type LngLatBoundsLike,
+  type Map as MapLibreMap,
+  type MapLayerMouseEvent,
+} from 'maplibre-gl';
 import type { Feature, FeatureCollection, Geometry, Position } from 'geojson';
 import { Search, MapPin, Users } from 'lucide-react';
 // Barangay boundary polygons: NAMRIA administrative-boundary shapefiles
@@ -25,6 +25,7 @@ import { Search, MapPin, Users } from 'lucide-react';
 import barangayBoundaries from '../../data/geo/puerto-princesa-barangays.json';
 import { barangayPopulation2024 } from '../../data/barangayPopulation';
 import { normalizeBarangayName } from '../../lib/barangayNames';
+import { createMap, withOverlays } from '../../lib/mapStyle';
 
 const numberFormat = new Intl.NumberFormat('en-US');
 
@@ -38,28 +39,75 @@ const boundaries = barangayBoundaries as FeatureCollection<
   BarangayProperties
 >;
 
-const DEFAULT_STYLE: PathOptions = {
-  color: '#0052bc',
-  weight: 1,
-  fillColor: '#66a3f3',
-  fillOpacity: 0.35,
-};
+// Feature-state driven styling. Priority:
+// an external highlight (hovering the list) wins over the selection, which
+// wins over a plain mouse hover.
+const isOn = (key: string): ExpressionSpecification => [
+  'boolean',
+  ['feature-state', key],
+  false,
+];
 
-const HOVER_STYLE: PathOptions = {
-  ...DEFAULT_STYLE,
-  weight: 2,
-  fillOpacity: 0.6,
-};
-
-const SELECTED_STYLE: PathOptions = {
-  color: '#003d8d',
-  weight: 2.5,
-  fillColor: '#0066eb',
-  fillOpacity: 0.75,
-};
+const MAP_STYLE = withOverlays(
+  {
+    barangays: { type: 'geojson', data: boundaries, promoteId: 'pcode' },
+  },
+  [
+    {
+      id: 'barangay-fill',
+      type: 'fill',
+      source: 'barangays',
+      paint: {
+        'fill-color': [
+          'case',
+          isOn('highlighted'),
+          '#66a3f3',
+          isOn('selected'),
+          '#0066eb',
+          '#66a3f3',
+        ],
+        'fill-opacity': [
+          'case',
+          isOn('highlighted'),
+          0.6,
+          isOn('selected'),
+          0.75,
+          isOn('hover'),
+          0.6,
+          0.35,
+        ],
+      },
+    },
+    {
+      id: 'barangay-line',
+      type: 'line',
+      source: 'barangays',
+      paint: {
+        'line-color': [
+          'case',
+          isOn('highlighted'),
+          '#0052bc',
+          isOn('selected'),
+          '#003d8d',
+          '#0052bc',
+        ],
+        'line-width': [
+          'case',
+          isOn('highlighted'),
+          2,
+          isOn('selected'),
+          2.5,
+          isOn('hover'),
+          2,
+          1,
+        ],
+      },
+    },
+  ]
+);
 
 // Recursively walks GeoJSON coordinate arrays (Polygon or MultiPolygon,
-// any nesting depth) to compute a Leaflet bounds box.
+// any nesting depth) to compute a bounds box.
 function extendBoundsFromCoordinates(
   coords: Position | Position[] | Position[][] | Position[][][],
   bounds: { minLat: number; minLng: number; maxLat: number; maxLng: number }
@@ -79,7 +127,7 @@ function extendBoundsFromCoordinates(
 
 function getFeatureBounds(
   feature: Feature<Geometry, BarangayProperties>
-): LatLngBoundsExpression {
+): LngLatBoundsLike {
   const bounds = {
     minLat: Infinity,
     minLng: Infinity,
@@ -92,8 +140,8 @@ function getFeatureBounds(
     bounds
   );
   return [
-    [bounds.minLat, bounds.minLng],
-    [bounds.maxLat, bounds.maxLng],
+    [bounds.minLng, bounds.minLat],
+    [bounds.maxLng, bounds.maxLat],
   ];
 }
 
@@ -109,17 +157,33 @@ const CITY_BOUNDS = (() => {
     extendBoundsFromCoordinates(f.geometry.coordinates, bounds)
   );
   return [
-    [bounds.minLat, bounds.minLng],
-    [bounds.maxLat, bounds.maxLng],
-  ] as LatLngBoundsExpression;
+    [bounds.minLng, bounds.minLat],
+    [bounds.maxLng, bounds.maxLat],
+  ] as LngLatBoundsLike;
 })();
 
-function MapReadyBridge({ onReady }: { onReady: (map: LeafletMap) => void }) {
-  const map = useMap();
-  useEffect(() => {
-    onReady(map);
-  }, [map, onReady]);
-  return null;
+function pcodeByName(name: string | null) {
+  if (!name) return undefined;
+  return boundaries.features.find(
+    f =>
+      normalizeBarangayName(f.properties.name) === normalizeBarangayName(name)
+  )?.properties.pcode;
+}
+
+// Moves a boolean feature-state flag from one barangay to another.
+function moveFlag(
+  map: MapLibreMap,
+  key: string,
+  from: string | undefined,
+  to: string | undefined
+) {
+  if (from === to) return;
+  if (from) {
+    map.setFeatureState({ source: 'barangays', id: from }, { [key]: false });
+  }
+  if (to) {
+    map.setFeatureState({ source: 'barangays', id: to }, { [key]: true });
+  }
 }
 
 interface BarangayMapProps {
@@ -139,12 +203,9 @@ const BarangayMap = forwardRef<BarangayMapHandle, BarangayMapProps>(
     const { t } = useTranslation('common');
     const [selected, setSelected] = useState<string | null>(null);
     const [query, setQuery] = useState('');
-    const selectedRef = useRef<string | null>(null);
-    const mapRef = useRef<LeafletMap | null>(null);
-
-    useEffect(() => {
-      selectedRef.current = selected;
-    }, [selected]);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const mapRef = useRef<MapLibreMap | null>(null);
+    const [mapLoaded, setMapLoaded] = useState(false);
 
     const matches = useMemo(() => {
       const q = query.trim().toLowerCase();
@@ -169,10 +230,89 @@ const BarangayMap = forwardRef<BarangayMapHandle, BarangayMapProps>(
       setSelected(feature.properties.name);
       setQuery('');
       mapRef.current?.fitBounds(getFeatureBounds(feature), {
-        maxZoom: 14,
-        padding: [24, 24],
+        maxZoom: 13,
+        padding: 24,
       });
     }
+    // Map event handlers are bound once; route clicks through a ref so they
+    // always call the latest focusBarangay.
+    const focusRef = useRef(focusBarangay);
+    focusRef.current = focusBarangay;
+
+    useEffect(() => {
+      if (!containerRef.current) return;
+      const map = createMap({
+        container: containerRef.current,
+        style: MAP_STYLE,
+        bounds: CITY_BOUNDS,
+      });
+      mapRef.current = map;
+      map.on('load', () => setMapLoaded(true));
+
+      const tooltip = new Popup({
+        closeButton: false,
+        closeOnClick: false,
+        className: 'map-tooltip',
+        offset: 12,
+      });
+      let hoveredId: string | undefined;
+
+      map.on('mousemove', 'barangay-fill', (e: MapLayerMouseEvent) => {
+        const feature = e.features?.[0];
+        if (!feature) return;
+        const id = feature.id as string;
+        moveFlag(map, 'hover', hoveredId, id);
+        hoveredId = id;
+        map.getCanvas().style.cursor = 'pointer';
+        const name = String(feature.properties.name);
+        const population = barangayPopulation2024[normalizeBarangayName(name)];
+        tooltip
+          .setLngLat(e.lngLat)
+          .setText(
+            population
+              ? `${name} · Pop. ${numberFormat.format(population)}`
+              : name
+          )
+          .addTo(map);
+      });
+      map.on('mouseleave', 'barangay-fill', () => {
+        moveFlag(map, 'hover', hoveredId, undefined);
+        hoveredId = undefined;
+        map.getCanvas().style.cursor = '';
+        tooltip.remove();
+      });
+      map.on('click', 'barangay-fill', (e: MapLayerMouseEvent) => {
+        const pcode = e.features?.[0]?.id;
+        const feature = boundaries.features.find(
+          f => f.properties.pcode === pcode
+        );
+        if (feature) focusRef.current(feature);
+      });
+
+      return () => {
+        tooltip.remove();
+        mapRef.current = null;
+        setMapLoaded(false);
+        map.remove();
+      };
+    }, []);
+
+    // Mirror React state into feature-state once the barangay source exists.
+    const selectedId = pcodeByName(selected);
+    const highlightedId = pcodeByName(highlightedName);
+    const appliedRef = useRef<{ selected?: string; highlighted?: string }>({});
+    useEffect(() => {
+      const map = mapRef.current;
+      if (!map || !mapLoaded) return;
+      moveFlag(map, 'selected', appliedRef.current.selected, selectedId);
+      moveFlag(
+        map,
+        'highlighted',
+        appliedRef.current.highlighted,
+        highlightedId
+      );
+      appliedRef.current = { selected: selectedId, highlighted: highlightedId };
+    }, [mapLoaded, selectedId, highlightedId]);
 
     useImperativeHandle(ref, () => ({
       focusByName(name: string) {
@@ -198,7 +338,7 @@ const BarangayMap = forwardRef<BarangayMapHandle, BarangayMapProps>(
               className="w-full rounded-md border border-gray-300 py-2 pl-9 pr-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
             {matches.length > 0 && (
-              <ul className="absolute z-[1000] mt-1 max-h-56 w-full overflow-y-auto rounded-md border border-gray-200 bg-white shadow-lg">
+              <ul className="absolute z-20 mt-1 max-h-56 w-full overflow-y-auto rounded-md border border-gray-200 bg-white shadow-lg">
                 {matches.map(f => (
                   <li key={f.properties.pcode}>
                     <button
@@ -216,61 +356,10 @@ const BarangayMap = forwardRef<BarangayMapHandle, BarangayMapProps>(
         </div>
 
         <div className="relative z-0">
-          <MapContainer
-            bounds={CITY_BOUNDS}
-            scrollWheelZoom={false}
+          <div
+            ref={containerRef}
             className="h-96 w-full rounded-md lg:h-[28rem]"
-          >
-            <MapReadyBridge onReady={map => (mapRef.current = map)} />
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            />
-            <GeoJSON
-              data={boundaries}
-              style={feature => {
-                const name = feature?.properties.name ?? '';
-                if (
-                  highlightedName &&
-                  normalizeBarangayName(name) ===
-                    normalizeBarangayName(highlightedName)
-                ) {
-                  return HOVER_STYLE;
-                }
-                return name === selected ? SELECTED_STYLE : DEFAULT_STYLE;
-              }}
-              onEachFeature={(
-                feature: Feature<Geometry, BarangayProperties>,
-                layer: Layer
-              ) => {
-                const population =
-                  barangayPopulation2024[
-                    normalizeBarangayName(feature.properties.name)
-                  ];
-                layer.bindTooltip(
-                  population
-                    ? `${feature.properties.name} · Pop. ${numberFormat.format(population)}`
-                    : feature.properties.name,
-                  { sticky: true }
-                );
-                layer.on({
-                  mouseover: e => {
-                    if (feature.properties.name !== selectedRef.current) {
-                      e.target.setStyle(HOVER_STYLE);
-                    }
-                  },
-                  mouseout: e => {
-                    e.target.setStyle(
-                      feature.properties.name === selectedRef.current
-                        ? SELECTED_STYLE
-                        : DEFAULT_STYLE
-                    );
-                  },
-                  click: () => focusBarangay(feature),
-                });
-              }}
-            />
-          </MapContainer>
+          />
         </div>
 
         <div className="mt-3 flex items-center gap-2 rounded-md border border-primary-100 bg-primary-50 px-4 py-3 text-sm text-gray-700">

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Section from '../ui/Section';
 import { Heading } from '../ui/Heading';
 import { demographics } from '../../data/statistics';
-import BarangayMap from '../map/BarangayMap';
+import { BarangayMap } from '../map/LazyMaps';
 
 const numberFormat = new Intl.NumberFormat('en-US');
 
