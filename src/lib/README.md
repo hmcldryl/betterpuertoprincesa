@@ -5,7 +5,6 @@ This directory contains the configurable typography system for markdown content 
 ## Features
 
 - **Configurable Themes**: Create custom typography themes with specific styling for each markdown element
-- **Theme Switching**: Live theme switching with a dropdown selector
 - **Tailwind Integration**: All themes use Tailwind CSS classes for consistent styling
 - **Type Safety**: Full TypeScript support with proper type definitions
 
@@ -62,11 +61,10 @@ Each theme can customize the following elements:
 
 1. Create your theme configuration in `typographyThemes.ts`
 2. Add it to the `typographyThemes` object
-3. The theme will automatically appear in the theme selector
+3. Pass its name as the `theme` prop to `<Document />`
 
 ## Components
 
 - `typographyThemes.ts`: Theme definitions and utilities
 - `markdownComponents.tsx`: ReactMarkdown component mapping
-- `ThemeSelector.tsx`: UI component for theme switching
 - `markdownLoader.ts`: Markdown content loading utilities

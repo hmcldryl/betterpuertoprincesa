@@ -12,8 +12,6 @@
     "format:check": "prettier --check .",
     "preview": "vite preview",
     "prepare": "husky",
-    "convert-yaml": "node scripts/yaml-to-json.js",
-    "dev:yaml": "npm run convert-yaml && npm run dev",
     "release:dry-run": "semantic-release --dry-run --no-ci"
   },
   "lint-staged": {
@@ -30,7 +28,6 @@
     "@tailwindcss/typography": "^0.5.18",
     "@types/js-yaml": "^4.0.9",
     "clsx": "^2.1.1",
-    "dotenv": "^17.2.2",
     "i18next": "^25.5.2",
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-http-backend": "^3.0.2",
