@@ -45,12 +45,6 @@ export const onlineServices: OnlineService[] = [
     site: 'filipizen.com',
   },
   {
-    key: 'request',
-    icon: 'MessageSquareText',
-    url: 'https://cgpp.online/servicerequest',
-    site: 'cgpp.online',
-  },
-  {
     key: 'ordinances',
     icon: 'ScrollText',
     url: 'https://puertoprincesa.ph/legislative-tracking-system/',
