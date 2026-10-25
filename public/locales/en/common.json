@@ -300,7 +300,7 @@
       },
       "request": {
         "title": "Send a request to a city office",
-        "body": "File a request or concern on the city's service desk and follow its progress. You need to sign up for a free account first."
+        "body": "File a request or concern on the city's service desk and follow its progress. You need to sign up for an account first."
       },
       "ordinances": {
         "title": "Look up an ordinance or resolution",
