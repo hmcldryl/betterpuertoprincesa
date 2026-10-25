@@ -15,7 +15,7 @@ BetterPuertoPrincesa.org is a volunteer project. We wanted a simple place where 
 
 The City Government of Puerto Princesa already does a lot of work to keep people informed, through [puertoprincesa.ph](https://puertoprincesa.ph), its online services and the Facebook pages of each office. This site doesn't replace any of that. It's a companion, put together by residents, that points back to those official sources and tries to make them easier to find. If something here ever differs from what the city has announced, go with the city.
 
-We're not affiliated with the City Government. Everything here is collected by volunteers from public information, and we keep adding and correcting things as we go. If you spot something wrong or out of date, please let us know.
+Everything here is collected by volunteers from public information, and we keep adding and correcting things as we go. If you spot something wrong or out of date, please let us know.
 
 ## Origins
 
