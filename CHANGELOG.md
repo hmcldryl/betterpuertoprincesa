@@ -1,3 +1,9 @@
+## [1.11.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.10.0...v1.11.0) (2026-10-28)
+
+### Features
+
+- **hotlines:** add emergency and utility hotlines page ([#43](https://github.com/hmcldryl/betterpuertoprincesa/issues/43)) ([bf5dbc8](https://github.com/hmcldryl/betterpuertoprincesa/commit/bf5dbc828b11af5b767d8691ec109aee8a7c7ce1))
+
 ## [1.10.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.9.0...v1.10.0) (2026-10-28)
 
 ### Features
