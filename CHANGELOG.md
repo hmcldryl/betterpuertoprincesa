@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.5.0...v1.6.0) (2026-10-28)
+
+### Features
+
+- **search:** add quick search bar and search modal ([8f84fa0](https://github.com/hmcldryl/betterpuertoprincesa/commit/8f84fa070a760a54a8abe5392a7854fc7626d3a4))
+
 ## [1.5.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.4.0...v1.5.0) (2026-10-28)
 
 ### Features
