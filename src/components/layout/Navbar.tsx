@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { LANGUAGES } from '../../i18n/languages';
 import { hotlines } from '../../data/hotlines';
 import { Ticker } from '../ui/Ticker';
-import { cn } from '../../lib/utils';
+import { cn, searchShortcutLabel } from '../../lib/utils';
 import SearchModal from '../search/SearchModal';
 
 const HOTLINE_ITEMS = hotlines.map(h => `${h.label}: ${h.number}`);
@@ -152,14 +152,14 @@ const Navbar: React.FC = () => {
               type="button"
               onClick={() => setSearchOpen(true)}
               className="flex w-full items-center gap-2 rounded-full border border-white/20 bg-primary-900/60 hover:bg-primary-900 hover:border-balayong-300 px-3.5 py-1 text-xs text-primary-100 transition-all shadow-inner"
-              aria-label="Search city services, public markets, emergency hotlines"
+              aria-label="Search city services, public markets, and offices"
             >
               <Search className="h-3.5 w-3.5 text-balayong-200 shrink-0" />
               <span className="truncate text-left text-primary-100 font-medium">
-                Search services, markets, hotlines...
+                Search services, markets, offices...
               </span>
               <kbd className="ml-auto shrink-0 rounded border border-white/20 bg-white/10 px-1.5 py-0.2 text-[10px] font-mono text-primary-200">
-                ⌘K
+                {searchShortcutLabel}
               </kbd>
             </button>
           </div>
@@ -251,17 +251,6 @@ const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-
-            {/* Desktop compact search trigger icon */}
-            <button
-              type="button"
-              onClick={() => setSearchOpen(true)}
-              className="ml-1 flex h-8 w-8 items-center justify-center rounded-full text-gray-500 hover:bg-balayong-100 hover:text-balayong-800 transition-colors"
-              aria-label="Search city services"
-              title="Search (⌘K)"
-            >
-              <Search className="h-4 w-4" />
-            </button>
           </div>
 
           {/* Mobile actions: 1-tap direct search button + menu toggle */}
