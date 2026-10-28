@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.0...v1.6.1) (2026-10-28)
+
+### Bug Fixes
+
+- **search:** remove dead links and unsourced claims ([#38](https://github.com/hmcldryl/betterpuertoprincesa/issues/38)) ([c90b3a9](https://github.com/hmcldryl/betterpuertoprincesa/commit/c90b3a9737493cc224dc68f98eeff84e236daf83)), closes [#32](https://github.com/hmcldryl/betterpuertoprincesa/issues/32) [#33](https://github.com/hmcldryl/betterpuertoprincesa/issues/33) [#34](https://github.com/hmcldryl/betterpuertoprincesa/issues/34)
+
 ## [1.6.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.5.0...v1.6.0) (2026-10-28)
 
 ### Features
