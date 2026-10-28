@@ -35,7 +35,7 @@ Include in your report:
 **Hosting & transport:**
 
 - Hosted on Vercel — HTTPS/TLS and HSTS are enforced by the platform, not custom server config
-- Deploys are gated behind CI (`.github/workflows/ci.yml`) and, for production, [semantic-release](https://semantic-release.gitbook.io/) on `main` (`.github/workflows/release.yml`)
+- Production deploys only happen from `main`, which needs a reviewed PR and a passing CI check (`.github/workflows/ci.yml`). Vercel deploys each merge, and [semantic-release](https://semantic-release.gitbook.io/) versions it (`.github/workflows/release.yml`)
 
 **Application security:**
 
