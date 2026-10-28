@@ -14,7 +14,6 @@ export interface UtilityAdvisory {
   id: string;
   source: UtilitySource;
   providerName: string;
-  utilityType: string;
   title: string;
   date: string;
   url: string;
@@ -29,7 +28,6 @@ export interface UtilityAdvisory {
   summary: string;
   content: string;
   imageUrl?: string;
-  rawContentSnippet?: string;
 }
 
 export interface UtilitySourceMetadata {
@@ -46,6 +44,7 @@ export interface UtilityAdvisoriesData {
     palecoCount: number;
     ppcwdCount: number;
     totalCount: number;
+    failedSources?: UtilitySource[];
     sources: UtilitySourceMetadata[];
   };
   advisories: UtilityAdvisory[];

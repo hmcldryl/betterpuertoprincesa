@@ -16,7 +16,6 @@ export interface UtilityAdvisory {
   id: string;
   source: UtilitySource;
   providerName: string;
-  utilityType: string;
   title: string;
   date: string;
   url: string;
@@ -31,7 +30,6 @@ export interface UtilityAdvisory {
   summary: string;
   content: string;
   imageUrl?: string;
-  rawContentSnippet?: string;
 }
 
 // All 66 official barangays of Puerto Princesa City + notable zones/landmarks
@@ -97,7 +95,6 @@ const PPC_BARANGAYS = [
   'Sicsican',
   'Simpocan',
   'Tagabinet',
-  'Tagabinit',
   'Tagburos',
   'Tagumpay',
   'Tanabag',
@@ -235,6 +232,19 @@ interface WpPost {
   };
 }
 
+// Posts older than this aren't treated as ongoing or urgent anymore. Neither
+// site reliably links a final update back to the original report, so age is
+// the only signal that an outage is over.
+const URGENT_WINDOW_HOURS = 48;
+
+function isRecent(post: WpPost): boolean {
+  const published = post.date_gmt
+    ? new Date(`${post.date_gmt}Z`)
+    : new Date(post.date);
+  const ageHours = (Date.now() - published.getTime()) / 36e5;
+  return ageHours >= 0 && ageHours <= URGENT_WINDOW_HOURS;
+}
+
 function parsePalecoPost(post: WpPost): UtilityAdvisory {
   const rawTitle = post.title?.rendered || '';
   const rawContent = post.content?.rendered || '';
@@ -271,7 +281,7 @@ function parsePalecoPost(post: WpPost): UtilityAdvisory {
     status = 'Restored';
   } else if (isScheduled) {
     status = 'Scheduled';
-  } else if (/Emergency/i.test(title) || timeOutMatch) {
+  } else if ((/Emergency/i.test(title) || timeOutMatch) && isRecent(post)) {
     status = 'Ongoing / Investigating';
   }
 
@@ -319,7 +329,6 @@ function parsePalecoPost(post: WpPost): UtilityAdvisory {
     id: `paleco-${post.id}`,
     source: 'PALECO',
     providerName: 'Palawan Electric Cooperative',
-    utilityType: 'Electric Power',
     title,
     date: post.date || post.date_gmt || new Date().toISOString(),
     url: post.link,
@@ -334,7 +343,6 @@ function parsePalecoPost(post: WpPost): UtilityAdvisory {
     summary,
     content: cleanContent,
     imageUrl,
-    rawContentSnippet: cleanContent.slice(0, 800),
   };
 }
 
@@ -348,8 +356,6 @@ function parsePpcwdPost(post: WpPost): UtilityAdvisory {
   const cleanExcerpt = cleanHtml(rawExcerpt);
   const fullText = `${title}\n${cleanContent}\n${cleanExcerpt}`;
 
-  const affectedAreas = extractAffectedAreas(fullText);
-
   let category: AdvisoryCategory = 'water-advisory';
   let status = 'Advisory';
 
@@ -357,7 +363,12 @@ function parsePpcwdPost(post: WpPost): UtilityAdvisory {
     /Interruption|Low\s*Pressure|Water\s*Advisories|Water\s*Cut|Maintenance|Pipeline/i.test(
       title
     );
-  const isEmergency = /Emergency|Leak|Emergency\s*Repair/i.test(fullText);
+  // Only the title: explainers and news posts often mention leaks or
+  // emergencies in passing.
+  const isEmergency =
+    isInterruption && /Emergency|Leak/i.test(title) && isRecent(post);
+  // Barangays named in a news article aren't "affected areas".
+  const affectedAreas = isInterruption ? extractAffectedAreas(fullText) : [];
   const isQuality = /Laboratory|Testing|Safe\s*Water|Potability/i.test(
     fullText
   );
@@ -397,7 +408,6 @@ function parsePpcwdPost(post: WpPost): UtilityAdvisory {
     id: `ppcwd-${post.id}`,
     source: 'PPCWD',
     providerName: 'Puerto Princesa City Water District',
-    utilityType: 'Water Supply',
     title,
     date: post.date || post.date_gmt || new Date().toISOString(),
     url: post.link,
@@ -408,7 +418,6 @@ function parsePpcwdPost(post: WpPost): UtilityAdvisory {
     summary,
     content: cleanContent,
     imageUrl,
-    rawContentSnippet: cleanContent.slice(0, 800),
   };
 }
 
@@ -435,15 +444,12 @@ async function fetchWithTimeout(
 
 export default async function handler(
   req: IncomingMessage,
-  res: ServerResponse & {
-    status?: (code: number) => ServerResponse;
-    json?: (data: unknown) => void;
-  }
+  res: ServerResponse
 ) {
-  // CORS & Cache-Control headers
+  // CORS headers (Cache-Control is set below, once we know whether the
+  // sources responded)
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=86400');
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
 
   if (req.method === 'OPTIONS') {
@@ -457,14 +463,18 @@ export default async function handler(
   const ppcwdUrl =
     'https://ppcwater.gov.ph/wp-json/wp/v2/posts?_embed=1&per_page=15';
 
+  const failedSources: UtilitySource[] = [];
+
   const palecoPromise = fetchWithTimeout(palecoUrl)
     .then(async r => {
       if (!r.ok) throw new Error(`PALECO HTTP ${r.status}`);
       const data = (await r.json()) as WpPost[];
-      return Array.isArray(data) ? data.map(parsePalecoPost) : [];
+      if (!Array.isArray(data)) throw new Error('PALECO returned no posts');
+      return data.map(parsePalecoPost);
     })
     .catch(err => {
       console.warn('[advisories] PALECO fetch failed:', err?.message || err);
+      failedSources.push('PALECO');
       return [] as UtilityAdvisory[];
     });
 
@@ -472,10 +482,12 @@ export default async function handler(
     .then(async r => {
       if (!r.ok) throw new Error(`PPCWD HTTP ${r.status}`);
       const data = (await r.json()) as WpPost[];
-      return Array.isArray(data) ? data.map(parsePpcwdPost) : [];
+      if (!Array.isArray(data)) throw new Error('PPCWD returned no posts');
+      return data.map(parsePpcwdPost);
     })
     .catch(err => {
       console.warn('[advisories] PPCWD fetch failed:', err?.message || err);
+      failedSources.push('PPCWD');
       return [] as UtilityAdvisory[];
     });
 
@@ -483,6 +495,25 @@ export default async function handler(
     palecoPromise,
     ppcwdPromise,
   ]);
+
+  // Both sources down: don't let the CDN cache an empty list. With no-store
+  // on an error, Vercel keeps serving the last good copy within its
+  // stale-while-revalidate window, and the page shows its error state
+  // otherwise.
+  if (failedSources.length === 2) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.statusCode = 502;
+    res.end(JSON.stringify({ error: 'PALECO and PPCWD are unreachable' }));
+    return;
+  }
+
+  // One source down: cache briefly so it's retried soon.
+  res.setHeader(
+    'Cache-Control',
+    failedSources.length
+      ? 's-maxage=300, stale-while-revalidate=86400'
+      : 's-maxage=1800, stale-while-revalidate=86400'
+  );
 
   const combined = [...palecoItems, ...ppcwdItems].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -494,25 +525,11 @@ export default async function handler(
       palecoCount: palecoItems.length,
       ppcwdCount: ppcwdItems.length,
       totalCount: combined.length,
+      failedSources,
     },
     advisories: combined,
   };
 
-  const jsonString = JSON.stringify(responsePayload);
-
-  const resWithJson = res as ServerResponse & {
-    status?: (code: number) => ServerResponse;
-    json?: (data: unknown) => void;
-  };
-
-  if (
-    typeof resWithJson.status === 'function' &&
-    typeof resWithJson.json === 'function'
-  ) {
-    resWithJson.status(200);
-    resWithJson.json(responsePayload);
-  } else {
-    res.statusCode = 200;
-    res.end(jsonString);
-  }
+  res.statusCode = 200;
+  res.end(JSON.stringify(responsePayload));
 }
