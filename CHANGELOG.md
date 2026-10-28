@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.2...v1.7.0) (2026-10-28)
+
+### Features
+
+- **guides:** add print and copy link buttons to guide pages ([#46](https://github.com/hmcldryl/betterpuertoprincesa/issues/46)) ([a51521a](https://github.com/hmcldryl/betterpuertoprincesa/commit/a51521a9f7dbdd01c0fa7af7aa9095c69ee11f28))
+
 ## [1.6.2](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.1...v1.6.2) (2026-10-28)
 
 ### Bug Fixes
