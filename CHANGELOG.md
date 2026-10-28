@@ -1,3 +1,9 @@
+## [1.12.3](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.12.2...v1.12.3) (2026-10-28)
+
+### Bug Fixes
+
+- **seo:** add robots.txt and sitemap, noindex missing pages ([#51](https://github.com/hmcldryl/betterpuertoprincesa/issues/51)) ([062df6d](https://github.com/hmcldryl/betterpuertoprincesa/commit/062df6d6cf1fe64fab3e28a3f915b87a649c75d3)), closes [#36](https://github.com/hmcldryl/betterpuertoprincesa/issues/36)
+
 ## [1.12.2](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.12.1...v1.12.2) (2026-10-28)
 
 ### Bug Fixes
