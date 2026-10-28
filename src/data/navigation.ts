@@ -18,6 +18,7 @@ export const mainNavigation: NavigationItem[] = [
     label: 'Services',
     href: '/services',
     children: [
+      { label: 'Emergency Hotlines', href: '/hotlines' },
       { label: 'Utility Advisories', href: '/advisories' },
       { label: 'Public Markets', href: '/markets' },
       ...(servicesData.categories as Category[]).map(category => ({
