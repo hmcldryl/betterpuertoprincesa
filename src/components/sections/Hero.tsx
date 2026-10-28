@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Phone, Search, Store } from 'lucide-react';
+import {
+  ArrowRight,
+  Calculator,
+  Phone,
+  Search,
+  ShieldAlert,
+  Store,
+} from 'lucide-react';
 import BalayongBranch from '../ui/BalayongBranch';
 import { hotlines } from '../../data/hotlines';
 import SearchModal from '../search/SearchModal';
@@ -77,6 +84,19 @@ export default function Hero() {
                     <Store className="h-3 w-3 text-balayong-600" /> Public
                     Markets
                   </Link>
+                  <Link
+                    to="/fare-calculator"
+                    className="inline-flex items-center gap-1 rounded-full bg-white/90 border border-balayong-200 px-3 py-1 font-semibold text-gray-800 hover:bg-balayong-50 hover:text-balayong-900 shadow-2xs transition-colors"
+                  >
+                    <Calculator className="h-3 w-3 text-primary-600" /> Tricycle
+                    Fare
+                  </Link>
+                  <Link
+                    to="/hotlines"
+                    className="inline-flex items-center gap-1 rounded-full bg-white/90 border border-balayong-200 px-3 py-1 font-semibold text-gray-800 hover:bg-balayong-50 hover:text-balayong-900 shadow-2xs transition-colors"
+                  >
+                    <ShieldAlert className="h-3 w-3 text-red-600" /> Hotlines
+                  </Link>
                   <button
                     type="button"
                     onClick={() => openSearchWith('business permit')}
@@ -111,10 +131,14 @@ export default function Hero() {
 
         <div className="relative bg-primary-800 text-white">
           <div className="container mx-auto flex flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:gap-6">
-            <p className="flex shrink-0 items-center gap-2 text-sm text-primary-100">
+            <Link
+              to="/hotlines"
+              className="flex shrink-0 items-center gap-2 text-sm text-primary-100 hover:text-white"
+            >
               <Phone className="h-4 w-4 text-balayong-300" aria-hidden="true" />
-              {t('hero.hotlinesLabel')}
-            </p>
+              <span>{t('hero.hotlinesLabel')}</span>
+              <ArrowRight className="h-3.5 w-3.5 text-primary-300" />
+            </Link>
             <ul className="flex flex-wrap gap-x-6 gap-y-2">
               {hotlines.map(h => (
                 <li key={h.label}>
