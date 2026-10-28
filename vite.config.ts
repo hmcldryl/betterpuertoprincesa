@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-const SITE_URL = 'https://www.betterpuertoprincesa.org';
+const SITE_URL = 'https://betterpuertoprincesa.org';
 
 // Pages that aren't generated from content/. Keep in sync with App.tsx.
 const STATIC_ROUTES = [

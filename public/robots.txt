@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://www.betterpuertoprincesa.org/sitemap.xml
+Sitemap: https://betterpuertoprincesa.org/sitemap.xml
