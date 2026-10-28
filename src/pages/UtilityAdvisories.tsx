@@ -27,6 +27,13 @@ import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import PageHeader from '../components/ui/PageHeader';
 import type { UtilityAdvisory, UtilitySource } from '../types/utilityAdvisory';
+import { emergencyDirectory, type DirectoryContact } from '../data/hotlines';
+
+// Verified numbers live in src/data/hotlines.ts, with their sources.
+const utilityContacts = {
+  PALECO: emergencyDirectory.find(c => c.id === 'paleco') as DirectoryContact,
+  PPCWD: emergencyDirectory.find(c => c.id === 'ppcwd') as DirectoryContact,
+};
 
 function formatDate(isoString?: string): string {
   if (!isoString) return 'Just now';
@@ -51,11 +58,13 @@ export default function UtilityAdvisories() {
     palecoCount: number;
     ppcwdCount: number;
     totalCount: number;
+    failedSources?: UtilitySource[];
   }>({
     lastUpdated: '',
     palecoCount: 0,
     ppcwdCount: 0,
     totalCount: 0,
+    failedSources: [],
   });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
@@ -97,7 +106,7 @@ export default function UtilityAdvisories() {
     } catch (err: unknown) {
       console.warn('Error loading advisories:', err);
       setError(
-        'Unable to load live advisories. Please check your connection or try again.'
+        "Couldn't load the advisories right now. Check your connection or try again in a bit."
       );
     } finally {
       setIsLoading(false);
@@ -246,13 +255,13 @@ export default function UtilityAdvisories() {
     <>
       <SEO
         title="PALECO & PPCWD Advisories & Outages | Better Puerto Princesa"
-        description="Real-time public utility advisory tracker for Puerto Princesa City. Read official PALECO power service advisories, unscheduled blackouts, PPCWD water interruptions, and maintenance directly on our website."
+        description="PALECO power advisories and PPCWD water advisories for Puerto Princesa City in one place, refreshed every 30 minutes."
         keywords="PALECO power outage, PALECO advisory, PPCWD water interruption, Puerto Princesa brownout schedule, Palawan electric cooperative, Puerto Princesa water district, blackout PPC, water cut PPC"
       />
 
       <PageHeader
         title="Utility Advisories & Outages"
-        subtitle="Read live automated PALECO power bulletins, scheduled line interruptions, and PPCWD water supply advisories directly on our site without leaving the portal."
+        subtitle="The latest power and water advisories from PALECO and PPCWD, in one place. Refreshed every 30 minutes."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Services', href: '/services' },
@@ -264,12 +273,12 @@ export default function UtilityAdvisories() {
       <section className="border-b border-gray-200 bg-gray-50 py-3.5">
         <div className="container mx-auto px-4">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            {/* Live Serverless Feed Indicator */}
+            {/* Feed status */}
             <div className="flex flex-wrap items-center gap-2.5 text-xs md:text-sm text-gray-600">
               {isRefreshing ? (
                 <span className="inline-flex items-center gap-1.5 font-medium text-primary-700">
                   <RefreshCw className="h-3.5 w-3.5 animate-spin text-primary-600" />
-                  <span>Refreshing live feed from PALECO & PPCWD...</span>
+                  <span>Checking PALECO and PPCWD for new posts...</span>
                 </span>
               ) : (
                 <span className="inline-flex items-center gap-2 font-medium text-emerald-800">
@@ -278,8 +287,9 @@ export default function UtilityAdvisories() {
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
                   </span>
                   <span>
-                    <strong>Live Feed Active:</strong> Synced via Vercel
-                    Serverless Function & Edge Cache.
+                    {metadata.failedSources?.length
+                      ? `Couldn't reach ${metadata.failedSources.join(' and ')} just now, so some posts may be missing.`
+                      : 'Posts from PALECO and PPCWD, refreshed every 30 minutes.'}
                   </span>
                 </span>
               )}
@@ -309,20 +319,18 @@ export default function UtilityAdvisories() {
             {/* Quick Emergency Call Buttons */}
             <div className="flex flex-wrap items-center gap-2">
               <a
-                href="tel:09175532836"
+                href={`tel:${utilityContacts.PALECO.numbers[0].tel}`}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-900 transition hover:bg-amber-500/20"
-                title="Call PALECO 24/7 Outage Hotline"
               >
                 <Zap className="h-3.5 w-3.5 text-amber-600" />
-                <span>PALECO Hotline: 0917 553 2836</span>
+                <span>PALECO: {utilityContacts.PALECO.numbers[0].number}</span>
               </a>
               <a
-                href="tel:09173108865"
+                href={`tel:${utilityContacts.PPCWD.numbers[0].tel}`}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-sky-500/10 px-3 py-1.5 text-xs font-semibold text-sky-900 transition hover:bg-sky-500/20"
-                title="Call PPCWD 24/7 Water Dispatch"
               >
                 <Droplets className="h-3.5 w-3.5 text-sky-600" />
-                <span>PPCWD Hotline: 0917 310 8865</span>
+                <span>PPCWD: {utilityContacts.PPCWD.numbers[0].number}</span>
               </a>
             </div>
           </div>
@@ -888,7 +896,7 @@ export default function UtilityAdvisories() {
                 <Text className="mt-2 text-sm text-gray-700">
                   If your residence experiences an unscheduled power blackout or
                   sudden loss of water pressure not reflected on this bulletin,
-                  report directly to the official 24/7 dispatch hotlines.
+                  report it directly to PALECO or PPCWD.
                 </Text>
 
                 <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -907,17 +915,14 @@ export default function UtilityAdvisories() {
                       </div>
                     </div>
                     <div className="mt-3 text-xs text-gray-600 space-y-1.5">
-                      <p>
-                        • <strong>Mobile Hotline:</strong> 0917 553 2836
-                      </p>
-                      <p>
-                        • <strong>Landline:</strong> (048) 433-9144 / (048)
-                        433-2001
-                      </p>
-                      <p>
-                        • <strong>Office:</strong> KM 3.5, North National
-                        Highway, Tiniguiban
-                      </p>
+                      {utilityContacts.PALECO.numbers.map(n => (
+                        <p key={n.tel}>
+                          • <strong>{n.label ?? 'Phone'}:</strong>{' '}
+                          <a href={`tel:${n.tel}`} className="underline">
+                            {n.number}
+                          </a>
+                        </p>
+                      ))}
                       <p>
                         • When reporting, specify your Barangay, Sitio, and
                         nearby transformer pole number.
@@ -925,10 +930,10 @@ export default function UtilityAdvisories() {
                     </div>
                     <div className="mt-4 pt-3 border-t border-gray-100 flex gap-2">
                       <a
-                        href="tel:09175532836"
+                        href={`tel:${utilityContacts.PALECO.numbers[0].tel}`}
                         className="flex-1 rounded-lg bg-amber-600 py-2 text-center text-xs font-semibold text-white shadow-sm hover:bg-amber-700 transition"
                       >
-                        Call PALECO Dispatch
+                        Call PALECO
                       </a>
                     </div>
                   </div>
@@ -948,16 +953,14 @@ export default function UtilityAdvisories() {
                       </div>
                     </div>
                     <div className="mt-3 text-xs text-gray-600 space-y-1.5">
-                      <p>
-                        • <strong>Mobile Hotline:</strong> 0917 310 8865
-                      </p>
-                      <p>
-                        • <strong>Landline:</strong> (048) 433-2342 / (048)
-                        433-2550
-                      </p>
-                      <p>
-                        • <strong>Office:</strong> PPCWD Building, Rizal Avenue
-                      </p>
+                      {utilityContacts.PPCWD.numbers.map(n => (
+                        <p key={n.tel}>
+                          • <strong>{n.label ?? 'Phone'}:</strong>{' '}
+                          <a href={`tel:${n.tel}`} className="underline">
+                            {n.number}
+                          </a>
+                        </p>
+                      ))}
                       <p>
                         • Store sufficient emergency water in clean, covered
                         containers before scheduled supply works.
@@ -965,10 +968,10 @@ export default function UtilityAdvisories() {
                     </div>
                     <div className="mt-4 pt-3 border-t border-gray-100 flex gap-2">
                       <a
-                        href="tel:09173108865"
+                        href={`tel:${utilityContacts.PPCWD.numbers[0].tel}`}
                         className="flex-1 rounded-lg bg-sky-600 py-2 text-center text-xs font-semibold text-white shadow-sm hover:bg-sky-700 transition"
                       >
-                        Call PPCWD Dispatch
+                        Call PPCWD
                       </a>
                     </div>
                   </div>
@@ -1130,11 +1133,7 @@ export default function UtilityAdvisories() {
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-gray-200 bg-gray-50 px-5 py-3.5">
               <div className="flex items-center gap-2">
                 <a
-                  href={
-                    readingAdvisory.source === 'PALECO'
-                      ? 'tel:09175532836'
-                      : 'tel:09173108865'
-                  }
+                  href={`tel:${utilityContacts[readingAdvisory.source].numbers[0].tel}`}
                   className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700 transition"
                 >
                   <PhoneCall className="h-3.5 w-3.5" />
