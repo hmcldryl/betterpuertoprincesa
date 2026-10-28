@@ -15,6 +15,7 @@ import News from './pages/News';
 import { lazy, Suspense } from 'react';
 import PrinsesaNgBaybay from './pages/PrinsesaNgBaybay';
 import MiningWatch from './pages/MiningWatch';
+import Markets from './pages/Markets';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const UtilityAdvisories = lazy(() => import('./pages/UtilityAdvisories'));
@@ -44,6 +45,7 @@ function App() {
                   </Suspense>
                 }
               />
+              <Route path="/markets" element={<Markets />} />
               <Route path="/services/:category" element={<Services />} />
               <Route path="/services" element={<Services />} />
               <Route
