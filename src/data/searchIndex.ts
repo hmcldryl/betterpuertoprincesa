@@ -119,6 +119,29 @@ export const searchIndex: SearchItem[] = [
     ],
   },
 
+  // Hotlines
+  {
+    id: 'hotlines-directory',
+    title: 'Emergency & Utility Hotlines',
+    category: 'Hotline',
+    description:
+      'Phone numbers for 911, CDRRMO, fire, police, PALECO, PPCWD, and PCSD wildlife rescue.',
+    url: '/hotlines',
+    keywords: [
+      'emergency',
+      'hotline',
+      '911',
+      'sunog',
+      'pulis',
+      'paleco',
+      'brownout',
+      'kuryente',
+      'ppcwd',
+      'tubig',
+      'wildlife',
+    ],
+  },
+
   // Tools
   {
     id: 'tool-fare-calculator',

@@ -12,6 +12,7 @@ import Government from './pages/Government';
 import Statistics from './pages/Statistics';
 import Transparency from './pages/Transparency';
 import News from './pages/News';
+import Hotlines from './pages/Hotlines';
 import { lazy, Suspense } from 'react';
 import PrinsesaNgBaybay from './pages/PrinsesaNgBaybay';
 import MiningWatch from './pages/MiningWatch';
@@ -82,6 +83,7 @@ function App() {
               <Route path="/statistics" element={<Statistics />} />
               <Route path="/transparency" element={<Transparency />} />
               <Route path="/news" element={<News />} />
+              <Route path="/hotlines" element={<Hotlines />} />
               <Route
                 path="/prinsesa-ng-baybay"
                 element={<PrinsesaNgBaybay />}
