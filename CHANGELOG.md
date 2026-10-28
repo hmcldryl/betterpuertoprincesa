@@ -1,3 +1,9 @@
+## [1.12.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.11.0...v1.12.0) (2026-10-28)
+
+### Features
+
+- **services:** add civil registry, MTOP, sanitary permit and traffic guides ([#44](https://github.com/hmcldryl/betterpuertoprincesa/issues/44)) ([c26c8a3](https://github.com/hmcldryl/betterpuertoprincesa/commit/c26c8a30b9289570c360f622326fd5681be61c95))
+
 ## [1.11.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.10.0...v1.11.0) (2026-10-28)
 
 ### Features
