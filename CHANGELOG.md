@@ -1,3 +1,9 @@
+## [1.8.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.7.0...v1.8.0) (2026-10-28)
+
+### Features
+
+- **mining:** show more detail in map popups and add hover previews ([#45](https://github.com/hmcldryl/betterpuertoprincesa/issues/45)) ([eba85ab](https://github.com/hmcldryl/betterpuertoprincesa/commit/eba85ab37a7038d46c0ca3ca38e215af5beffa1d))
+
 ## [1.7.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.2...v1.7.0) (2026-10-28)
 
 ### Features
