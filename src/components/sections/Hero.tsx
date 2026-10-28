@@ -1,17 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import {
-  Phone,
-  Search,
-  Store,
-  Calculator,
-  ShieldAlert,
-  ArrowRight,
-} from 'lucide-react';
+import { Phone, Search, Store } from 'lucide-react';
 import BalayongBranch from '../ui/BalayongBranch';
 import { hotlines } from '../../data/hotlines';
 import SearchModal from '../search/SearchModal';
+import { searchShortcutLabel } from '../../lib/utils';
 
 // Pink field for the balayong, a bay-blue band along the bottom for the
 // Baywalk, and the Prinsesa ng Baybay statue standing at the water's edge.
@@ -50,16 +44,16 @@ export default function Hero() {
                     type="button"
                     onClick={() => openSearchWith('')}
                     className="flex-1 flex items-center justify-between gap-3 rounded-full bg-white px-5 py-3.5 text-sm text-gray-500 shadow-sm border border-balayong-300 hover:border-balayong-500 transition-all text-left group"
-                    aria-label="Search city services, public markets, hotlines, or offices"
+                    aria-label="Search city services, public markets, and offices"
                   >
                     <span className="flex items-center gap-2.5 truncate">
                       <Search className="h-4 w-4 text-gray-400 group-hover:text-primary-600 transition-colors shrink-0" />
                       <span className="truncate">
-                        Search permits, markets, fare, hotlines...
+                        Search permits, markets, offices...
                       </span>
                     </span>
                     <kbd className="hidden sm:inline-block rounded border border-gray-200 bg-gray-50 px-2 py-0.5 text-[10px] font-mono font-semibold text-gray-400">
-                      Ctrl+K
+                      {searchShortcutLabel}
                     </kbd>
                   </button>
 
@@ -82,19 +76,6 @@ export default function Hero() {
                   >
                     <Store className="h-3 w-3 text-balayong-600" /> Public
                     Markets
-                  </Link>
-                  <Link
-                    to="/fare-calculator"
-                    className="inline-flex items-center gap-1 rounded-full bg-white/90 border border-balayong-200 px-3 py-1 font-semibold text-gray-800 hover:bg-balayong-50 hover:text-balayong-900 shadow-2xs transition-colors"
-                  >
-                    <Calculator className="h-3 w-3 text-primary-600" /> Tricycle
-                    Fare
-                  </Link>
-                  <Link
-                    to="/hotlines"
-                    className="inline-flex items-center gap-1 rounded-full bg-white/90 border border-balayong-200 px-3 py-1 font-semibold text-gray-800 hover:bg-balayong-50 hover:text-balayong-900 shadow-2xs transition-colors"
-                  >
-                    <ShieldAlert className="h-3 w-3 text-red-600" /> Hotlines
                   </Link>
                   <button
                     type="button"
@@ -130,14 +111,10 @@ export default function Hero() {
 
         <div className="relative bg-primary-800 text-white">
           <div className="container mx-auto flex flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:gap-6">
-            <Link
-              to="/hotlines"
-              className="flex shrink-0 items-center gap-2 text-sm text-primary-100 hover:text-white"
-            >
+            <p className="flex shrink-0 items-center gap-2 text-sm text-primary-100">
               <Phone className="h-4 w-4 text-balayong-300" aria-hidden="true" />
-              <span>{t('hero.hotlinesLabel')}</span>
-              <ArrowRight className="h-3.5 w-3.5 text-primary-300" />
-            </Link>
+              {t('hero.hotlinesLabel')}
+            </p>
             <ul className="flex flex-wrap gap-x-6 gap-y-2">
               {hotlines.map(h => (
                 <li key={h.label}>

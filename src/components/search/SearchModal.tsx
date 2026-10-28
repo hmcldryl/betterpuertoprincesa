@@ -44,6 +44,23 @@ const CATEGORY_ICONS: Record<
   Landmark: Sparkles,
 };
 
+const CATEGORY_LABELS: Record<string, string> = {
+  All: 'All Results',
+  Market: 'Markets',
+  Service: 'Services',
+  Hotline: 'Hotlines',
+  Tool: 'Tools',
+  Transparency: 'Transparency',
+};
+
+// Only show a filter chip when the index has entries for it.
+const FILTER_CATEGORIES = [
+  'All',
+  ...['Market', 'Service', 'Hotline', 'Tool', 'Transparency'].filter(cat =>
+    searchIndex.some(item => item.category === cat)
+  ),
+];
+
 export default function SearchModal({
   isOpen,
   onClose,
@@ -128,15 +145,6 @@ export default function SearchModal({
 
   if (!isOpen) return null;
 
-  const categories = [
-    'All',
-    'Market',
-    'Service',
-    'Hotline',
-    'Tool',
-    'Transparency',
-  ];
-
   return (
     <div
       role="dialog"
@@ -162,7 +170,7 @@ export default function SearchModal({
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Search permits, markets, tricycle fare, hotlines, budget..."
+            placeholder="Search permits, markets, budget, offices..."
             className="w-full bg-transparent px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none"
           />
           {query && (
@@ -189,7 +197,7 @@ export default function SearchModal({
           <span className="text-gray-400 font-medium shrink-0 mr-1">
             Filter:
           </span>
-          {categories.map(cat => (
+          {FILTER_CATEGORIES.map(cat => (
             <button
               key={cat}
               type="button"
@@ -200,7 +208,7 @@ export default function SearchModal({
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              {cat === 'All' ? 'All Results' : `${cat}s`}
+              {CATEGORY_LABELS[cat]}
             </button>
           ))}
         </div>
@@ -215,8 +223,7 @@ export default function SearchModal({
               </p>
               <p className="text-sm mt-1 text-gray-500">
                 Try searching for words like &quot;palengke&quot;,
-                &quot;fare&quot;, &quot;business permit&quot;, or
-                &quot;hotlines&quot;.
+                &quot;business permit&quot;, or &quot;budget&quot;.
               </p>
             </div>
           ) : (
