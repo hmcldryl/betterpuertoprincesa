@@ -4,6 +4,7 @@ import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import { Banner } from '../components/ui/Banner';
 import { useParams } from 'react-router-dom';
+import { Check, Printer, Share2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -44,6 +45,17 @@ export default function Document({
   const [nestedIndex, setNestedIndex] = useState<CategoryIndex | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard access can be blocked; the address bar still has the link.
+    }
+  };
 
   const markdownComponents = createMarkdownComponents(
     getTypographyTheme(initialTheme)
@@ -226,7 +238,39 @@ export default function Document({
       <Section className="!py-4 !bg-gray-50">
         <Breadcrumbs items={breadcrumbs} />
       </Section>
-      <Section className="!pt-8 mb-12">
+      <Section className="!pt-6 mb-12">
+        <div className="mb-4 flex flex-wrap items-center gap-2 text-xs print:hidden">
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3.5 py-1.5 font-semibold text-gray-700 hover:bg-balayong-50 hover:text-balayong-800 transition-colors shadow-2xs"
+          >
+            <Printer className="h-3.5 w-3.5" aria-hidden="true" />
+            {t('document.print')}
+          </button>
+          <button
+            type="button"
+            onClick={handleShare}
+            className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3.5 py-1.5 font-semibold text-gray-700 hover:bg-balayong-50 hover:text-balayong-800 transition-colors shadow-2xs"
+          >
+            {copied ? (
+              <>
+                <Check
+                  className="h-3.5 w-3.5 text-emerald-600"
+                  aria-hidden="true"
+                />
+                <span className="font-bold text-emerald-700">
+                  {t('document.linkCopied')}
+                </span>
+              </>
+            ) : (
+              <>
+                <Share2 className="h-3.5 w-3.5" aria-hidden="true" />
+                {t('document.share')}
+              </>
+            )}
+          </button>
+        </div>
         <Card className="mb-8 markdown-content">
           <CardHeader>
             {markdownContent.description && (
