@@ -1,3 +1,9 @@
+## [1.12.2](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.12.1...v1.12.2) (2026-10-28)
+
+### Bug Fixes
+
+- **markets:** correct Irawan location and label the phone number ([#50](https://github.com/hmcldryl/betterpuertoprincesa/issues/50)) ([abe0040](https://github.com/hmcldryl/betterpuertoprincesa/commit/abe0040621995a17f32e7871db87bb662fe7643f)), closes [#31](https://github.com/hmcldryl/betterpuertoprincesa/issues/31)
+
 ## [1.12.1](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.12.0...v1.12.1) (2026-10-28)
 
 ### Bug Fixes
