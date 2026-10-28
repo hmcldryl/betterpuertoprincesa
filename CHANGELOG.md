@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.8.0...v1.9.0) (2026-10-28)
+
+### Features
+
+- **fare:** add tricycle fare calculator ([#41](https://github.com/hmcldryl/betterpuertoprincesa/issues/41)) ([98243a7](https://github.com/hmcldryl/betterpuertoprincesa/commit/98243a767fecceaa25a97691544d8f855119edae))
+
 ## [1.8.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.7.0...v1.8.0) (2026-10-28)
 
 ### Features
