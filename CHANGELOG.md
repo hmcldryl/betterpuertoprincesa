@@ -1,3 +1,9 @@
+## [1.12.1](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.12.0...v1.12.1) (2026-10-28)
+
+### Bug Fixes
+
+- **advisories:** fix status labels, caching on failures, and contact numbers ([#49](https://github.com/hmcldryl/betterpuertoprincesa/issues/49)) ([e6ddee6](https://github.com/hmcldryl/betterpuertoprincesa/commit/e6ddee69d2fe32a4b94e8e9b8f6452fadd0e64e0)), closes [#28](https://github.com/hmcldryl/betterpuertoprincesa/issues/28) [#29](https://github.com/hmcldryl/betterpuertoprincesa/issues/29) [#30](https://github.com/hmcldryl/betterpuertoprincesa/issues/30)
+
 ## [1.12.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.11.0...v1.12.0) (2026-10-28)
 
 ### Features
