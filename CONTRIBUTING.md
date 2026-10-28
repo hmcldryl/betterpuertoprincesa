@@ -17,9 +17,9 @@ Thanks for wanting to help. This is a volunteer-built civic transparency portal 
 
 Trunk-based — one long-lived branch:
 
-| Branch | Environment                                          | Purpose                                               |
-| ------ | ---------------------------------------------------- | ----------------------------------------------------- |
-| `main` | Production — https://betterpuertoprincesa.vercel.app | Default branch. All feature/fix branches target this. |
+| Branch | Environment                                      | Purpose                                               |
+| ------ | ------------------------------------------------ | ----------------------------------------------------- |
+| `main` | Production: https://www.betterpuertoprincesa.org | Default branch. All feature/fix branches target this. |
 
 Workflow:
 
@@ -77,6 +77,16 @@ Open an issue describing the feature, who it helps, and why. Mockups or examples
    git commit -m "feat: add brief description of your change"
    ```
 5. **Push** to your fork and **open a Pull Request into `main`**.
+
+### One feature per pull request
+
+Keep each PR to **one feature or one fix**, on its own branch off `main`. Ideally, work on one feature at a time and get it merged before starting the next.
+
+- A PR should build, work, and make sense on its own. Don't link to routes or pages that only exist in another unmerged PR.
+- Unrelated changes (a new page, a search bar, a navbar redesign) go in separate PRs, even if you wrote them together.
+- If one feature genuinely depends on another, say so in the PR description and open the dependent PR only after the first is merged.
+
+Small, self-contained PRs are faster to review, and if a feature breaks in production we can find, fix, or revert it without touching anything else.
 
 ### Submitting content — no coding required
 
@@ -147,10 +157,11 @@ When you do add a real value, cite where it came from — a source note next to 
 
 ## Pull request process
 
-1. Make sure `npm run lint` and `npm run build` pass locally.
-2. Fill out the PR description — what changed and why, and link any related issue.
-3. PRs into `main` get an ephemeral Vercel preview URL commented automatically; use it to sanity-check the change live.
-4. Wait for review and address feedback.
+1. Keep the PR to a single feature or fix (see [One feature per pull request](#one-feature-per-pull-request)).
+2. Make sure `npm run lint` and `npm run build` pass locally.
+3. Fill out the PR description: what changed and why, the data sourcing section if you touched `content/` or `src/data/`, and any related issue. Only tick checklist items you actually did.
+4. PRs from branches in this repo get an ephemeral Vercel preview URL commented automatically; use it to sanity-check the change live. PRs from forks don't get a preview, and a maintainer has to approve their first CI run.
+5. Wait for review and address feedback.
 
 ## Review criteria
 

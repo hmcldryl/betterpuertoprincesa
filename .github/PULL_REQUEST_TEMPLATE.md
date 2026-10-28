@@ -16,6 +16,7 @@ If you added or changed a real-world value in `content/` or `src/data/`, what's 
 
 ## Checklist
 
+- [ ] This PR covers [one feature or fix](../CONTRIBUTING.md#one-feature-per-pull-request) and works on its own, without depending on another unmerged PR
 - [ ] Commit messages follow [Conventional Commits](../CONTRIBUTING.md#commit-message-format-conventional-commits)
 - [ ] `npm run lint` passes
 - [ ] `npm run build` passes
