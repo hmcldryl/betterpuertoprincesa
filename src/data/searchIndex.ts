@@ -119,6 +119,26 @@ export const searchIndex: SearchItem[] = [
     ],
   },
 
+  // Tools
+  {
+    id: 'tool-fare-calculator',
+    title: 'Tricycle Fare Calculator',
+    category: 'Tool',
+    description:
+      'Estimate a tricycle fare from your trip distance, with 20% off for seniors, PWDs and students.',
+    url: '/fare-calculator',
+    keywords: [
+      'tricycle',
+      'fare',
+      'pamasahe',
+      'taripa',
+      'trike',
+      'discount',
+      'student',
+      'senior',
+    ],
+  },
+
   // Key Services
   {
     id: 'service-business-permits',

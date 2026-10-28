@@ -16,6 +16,7 @@ import { lazy, Suspense } from 'react';
 import PrinsesaNgBaybay from './pages/PrinsesaNgBaybay';
 import MiningWatch from './pages/MiningWatch';
 import Markets from './pages/Markets';
+import FareCalculator from './pages/FareCalculator';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const UtilityAdvisories = lazy(() => import('./pages/UtilityAdvisories'));
@@ -46,6 +47,7 @@ function App() {
                 }
               />
               <Route path="/markets" element={<Markets />} />
+              <Route path="/fare-calculator" element={<FareCalculator />} />
               <Route path="/services/:category" element={<Services />} />
               <Route path="/services" element={<Services />} />
               <Route
