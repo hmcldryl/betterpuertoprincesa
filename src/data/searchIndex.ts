@@ -73,7 +73,7 @@ export const searchIndex: SearchItem[] = [
     title: 'Irawan Agri-Bagsakan & Farmers Market',
     category: 'Market',
     description:
-      'Direct-from-farmer fresh produce, root crops, honey, and vegetables near City Hall.',
+      'Direct-from-farmer fresh produce, root crops, honey, and vegetables.',
     url: '/markets#irawan-agri-market',
     keywords: [
       'palengke',
