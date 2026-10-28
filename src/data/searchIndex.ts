@@ -251,6 +251,105 @@ export const searchIndex: SearchItem[] = [
     ],
   },
 
+  {
+    id: 'service-tricycle-franchise',
+    title: 'Apply or Renew Motorized Tricycle Franchise (MTOP)',
+    category: 'Service',
+    description:
+      'Motorized Tricycle Operators Permit (MTOP) issuance, renewal, and franchise guidelines under the MTFRB.',
+    url: '/services/business/apply-or-renew-motorized-tricycle-franchise-mtop',
+    keywords: [
+      'tricycle franchise',
+      'mtop',
+      'mtfrb',
+      'prangkisa',
+      'trike permit',
+      'body number',
+      'ctmo',
+    ],
+  },
+  {
+    id: 'service-sanitary-health-card',
+    title: 'Get Sanitary Permit and City Health Card (Green Card)',
+    category: 'Service',
+    description:
+      'City Health Office requirements for food handlers, service workers, medical tests, and annual sanitary clearance.',
+    url: '/services/health-services/get-sanitary-permit-and-city-health-card',
+    keywords: [
+      'health card',
+      'green card',
+      'sanitary permit',
+      'city health office',
+      'stool exam',
+      'xray',
+      'food handler',
+    ],
+  },
+  {
+    id: 'service-civil-birth',
+    title: 'Register a Birth Certificate (Civil Registry)',
+    category: 'Service',
+    description:
+      'Timely vs. late registration of birth certificates at the Puerto Princesa City Civil Registrar Office.',
+    url: '/services/civil-registry/register-birth-certificate',
+    keywords: [
+      'birth certificate',
+      'kapanganakan',
+      'civil registrar',
+      'rehistro',
+      'psa',
+      'late registration',
+    ],
+  },
+  {
+    id: 'service-civil-marriage',
+    title: 'Apply for Marriage License & Pre-Marriage Orientation',
+    category: 'Service',
+    description:
+      'Requirements, CENOMAR, family planning seminar, and 10-day notice for marriage licenses in Puerto Princesa.',
+    url: '/services/civil-registry/apply-for-marriage-license',
+    keywords: [
+      'kasal',
+      'marriage license',
+      'cenomar',
+      'civil wedding',
+      'cho seminar',
+      'pre-marriage',
+    ],
+  },
+  {
+    id: 'service-civil-death',
+    title: 'Register Death Certificate & Certified Records',
+    category: 'Service',
+    description:
+      'Death reporting, burial permits, and securing certified true copies of city civil registry documents.',
+    url: '/services/civil-registry/request-certified-copies-and-death-certificates',
+    keywords: [
+      'death certificate',
+      'libing',
+      'burial permit',
+      'certified copy',
+      'civil registry',
+    ],
+  },
+  {
+    id: 'service-traffic-violations',
+    title: 'Settle Traffic Violations & Citations (CTMO)',
+    category: 'Service',
+    description:
+      'How to pay traffic citation tickets, contest unjust apprehension, and impound release procedures.',
+    url: '/services/infrastructure-public-works/settle-traffic-violation-or-contest-citation',
+    keywords: [
+      'traffic violation',
+      'ticket',
+      'ctmo',
+      'huli',
+      'tubos motor',
+      'impound',
+      'citation',
+    ],
+  },
+
   // Transparency & Data
   {
     id: 'transparency-budget',
