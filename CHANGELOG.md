@@ -1,3 +1,9 @@
+## [1.10.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.9.0...v1.10.0) (2026-10-28)
+
+### Features
+
+- **wage:** add minimum wage page and pay calculator ([#42](https://github.com/hmcldryl/betterpuertoprincesa/issues/42)) ([1b508b1](https://github.com/hmcldryl/betterpuertoprincesa/commit/1b508b1312bbe3e5f5e695e20c677d6562320e77))
+
 ## [1.9.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.8.0...v1.9.0) (2026-10-28)
 
 ### Features
