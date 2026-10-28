@@ -15,6 +15,7 @@ import News from './pages/News';
 import { lazy, Suspense } from 'react';
 import PrinsesaNgBaybay from './pages/PrinsesaNgBaybay';
 import MiningWatch from './pages/MiningWatch';
+import MinimumWage from './pages/MinimumWage';
 import Markets from './pages/Markets';
 import FareCalculator from './pages/FareCalculator';
 import {
@@ -86,6 +87,7 @@ function App() {
                 element={<PrinsesaNgBaybay />}
               />
               <Route path="/mining-watch" element={<MiningWatch />} />
+              <Route path="/minimum-wage" element={<MinimumWage />} />
               <Route path="/:lang/:documentSlug" element={<Document />} />
               <Route path="/:documentSlug" element={<Document />} />
             </Routes>

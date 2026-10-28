@@ -449,4 +449,22 @@ export const searchIndex: SearchItem[] = [
       'water tank',
     ],
   },
+  {
+    id: 'tool-minimum-wage',
+    title: 'Minimum Wage in Puerto Princesa',
+    category: 'Tool',
+    description:
+      'Current MIMAROPA minimum wage for private sector and domestic workers, with an overtime and holiday pay calculator.',
+    url: '/minimum-wage',
+    keywords: [
+      'minimum wage',
+      'sahod',
+      'sweldo',
+      'kasambahay',
+      'overtime',
+      'holiday pay',
+      'dole',
+      'wage order',
+    ],
+  },
 ];
