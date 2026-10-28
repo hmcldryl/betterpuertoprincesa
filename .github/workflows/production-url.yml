@@ -3,7 +3,8 @@ name: Production URL
 # Vercel reports each production deploy to GitHub with its unique deployment
 # URL (betterpuertoprincesa-<hash>-<team>.vercel.app), which is what the repo's
 # Deployments panel shows. Once Vercel marks a production deploy successful,
-# add a status pointing at the real domain so GitHub shows that instead.
+# add a status pointing at the real domain so GitHub shows that instead. The
+# log_url is set to the site too, so GitHub doesn't link to Vercel.
 on: deployment_status
 
 jobs:
@@ -22,10 +23,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           DEPLOYMENT_ID: ${{ github.event.deployment.id }}
-          VERCEL_LOG_URL: ${{ github.event.deployment_status.target_url }}
         run: |
           gh api "repos/$GITHUB_REPOSITORY/deployments/$DEPLOYMENT_ID/statuses" \
             -f state=success \
             -f environment_url=https://betterpuertoprincesa.org \
-            -f log_url="$VERCEL_LOG_URL" \
+            -f log_url=https://betterpuertoprincesa.org \
             -f description="Live at betterpuertoprincesa.org"
