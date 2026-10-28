@@ -3,7 +3,8 @@ import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { Heading } from '../components/ui/Heading';
 import { Text } from '../components/ui/Text';
 import { Banner } from '../components/ui/Banner';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Check, Printer, Share2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -146,6 +147,11 @@ export default function Document({
   if (error) {
     return (
       <>
+        {/* The SPA answers every path with a 200, so tell crawlers not to
+            index missing pages. */}
+        <Helmet>
+          <meta name="robots" content="noindex" />
+        </Helmet>
         <Section className="!py-4 !bg-gray-50">
           <Breadcrumbs items={breadcrumbs} />
         </Section>
@@ -153,9 +159,17 @@ export default function Document({
           <Banner
             type="error"
             title={t('document.notFoundTitle')}
-            description={error}
+            description={t('document.notFoundDescription')}
             icon
           />
+          <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+            <Link to="/services" className="text-primary-700 underline">
+              {t('document.browseServices')}
+            </Link>
+            <Link to="/" className="text-primary-700 underline">
+              {t('document.goHome')}
+            </Link>
+          </div>
         </Section>
       </>
     );

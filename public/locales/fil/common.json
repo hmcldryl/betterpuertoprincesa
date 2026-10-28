@@ -48,6 +48,9 @@
   "document": {
     "loading": "Binubuksan ang pahina…",
     "notFoundTitle": "Hindi namin makita ang pahinang iyan",
+    "notFoundDescription": "Wala ang pahinang ito o nailipat na.",
+    "browseServices": "Tingnan ang mga serbisyo ng lungsod",
+    "goHome": "Bumalik sa home page",
     "print": "I-print o i-save bilang PDF",
     "share": "Kopyahin ang link",
     "linkCopied": "Nakopya na ang link"
