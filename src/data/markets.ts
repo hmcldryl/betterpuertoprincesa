@@ -1,3 +1,6 @@
+// Market details came from a contributor (#22) without sources, so treat
+// hours and stall requirements as a general guide. The only phone number is
+// the City Hall trunkline listed on puertoprincesa.ph.
 export interface MarketItem {
   id: string;
   name: string;
@@ -79,7 +82,7 @@ export const publicMarkets: MarketItem[] = [
     stallRentalAvailable: true,
     adminOffice:
       'CEED Satellite Administration Office, San Jose Commercial Complex',
-    contactNumber: '(048) 717-8000',
+    contactNumber: '(048) 717-8000 (City Hall Trunkline)',
   },
   {
     id: 'santa-monica-talipapa',
@@ -113,7 +116,7 @@ export const publicMarkets: MarketItem[] = [
     localName: 'Bagsakan sa Irawan',
     type: 'satellite',
     barangay: 'Irawan',
-    address: 'South National Highway, Barangay Irawan (Near City Hall Complex)',
+    address: 'South National Highway, Barangay Irawan',
     coordinates: [118.6948, 9.7789],
     operatingHours: '5:00 AM – 5:00 PM Daily',
     peakHours: '6:00 AM – 9:00 AM',
@@ -128,7 +131,6 @@ export const publicMarkets: MarketItem[] = [
     features: [
       'Direct-from-farmer pricing',
       'Freshly harvested seasonal local produce',
-      'Close to City Hall and government employees center',
     ],
     stallRentalAvailable: true,
     adminOffice:
