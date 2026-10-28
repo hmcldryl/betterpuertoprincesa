@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.3.1...v1.4.0) (2026-10-28)
+
+### Features
+
+- **utilities:** add cached serverless advisories API and reader page ([#24](https://github.com/hmcldryl/betterpuertoprincesa/issues/24)) ([1f7cfe0](https://github.com/hmcldryl/betterpuertoprincesa/commit/1f7cfe04096bbf853b4c1fcd664f864305da5846))
+
 ## [1.3.1](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.3.0...v1.3.1) (2026-10-25)
 
 ### Bug Fixes
