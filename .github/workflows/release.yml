@@ -1,16 +1,14 @@
-name: Release to Production
+name: Release
 
 # Conventional Commits on `main` drive semantic-release: it inspects commit
 # types (feat/fix/perf/etc.) since the last tag to decide the next version,
 # bumps package.json, writes CHANGELOG.md, tags, and cuts a GitHub Release.
-# The just-bumped code is then deployed to Vercel production in the same job.
+# Deploys are handled by Vercel's Git integration, not this workflow: every
+# push to `main` goes to production, and the version-bump commit pushed here
+# is skipped through `ignoreCommand` in vercel.json.
 on:
   push:
     branches: [main]
-
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   release:
@@ -19,7 +17,6 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
-      id-token: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -32,35 +29,8 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run lint
-      - run: npm run build
 
       - name: Semantic Release (version, changelog, tag, GitHub release)
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
         run: npx semantic-release
-
-      - name: Install Vercel CLI
-        run: npm install -g vercel@62.0.0
-
-      - name: Pull Vercel environment (production)
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build (production)
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Deploy (production)
-        # Without --archive=tgz, the CLI uploads every build output file as
-        # its own request and blows through Vercel's free-plan per-file
-        # upload quota ("Too many requests ... code: api-upload-free"),
-        # surfacing as an opaque "Upload aborted". Bundling into one tgz
-        # upload avoids that entirely. Retry loop stays as a safety net for
-        # genuine transient network blips.
-        run: |
-          for i in 1 2 3; do
-            vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }} && exit 0
-            echo "Deploy attempt $i failed, retrying in 15s..."
-            sleep 15
-          done
-          echo "::error::Deploy failed after 3 attempts"
-          exit 1

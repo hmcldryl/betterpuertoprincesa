@@ -17,7 +17,12 @@ import PrinsesaNgBaybay from './pages/PrinsesaNgBaybay';
 import MiningWatch from './pages/MiningWatch';
 import Markets from './pages/Markets';
 import FareCalculator from './pages/FareCalculator';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 
 const UtilityAdvisories = lazy(() => import('./pages/UtilityAdvisories'));
 
@@ -53,6 +58,19 @@ function App() {
               <Route
                 path="/services/:category/:documentSlug"
                 element={<Document categoryType="service" />}
+              />
+              {/* Old template categories in government.yaml that duplicate real pages */}
+              <Route
+                path="/government/news"
+                element={<Navigate to="/news" replace />}
+              />
+              <Route
+                path="/government/reports-and-statistics"
+                element={<Navigate to="/statistics" replace />}
+              />
+              <Route
+                path="/government/transparency-documents"
+                element={<Navigate to="/transparency" replace />}
               />
               <Route path="/government/:category" element={<Government />} />
               <Route path="/government" element={<Government />} />

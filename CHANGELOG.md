@@ -1,3 +1,21 @@
+## [1.8.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.7.0...v1.8.0) (2026-10-28)
+
+### Features
+
+- **mining:** show more detail in map popups and add hover previews ([#45](https://github.com/hmcldryl/betterpuertoprincesa/issues/45)) ([eba85ab](https://github.com/hmcldryl/betterpuertoprincesa/commit/eba85ab37a7038d46c0ca3ca38e215af5beffa1d))
+
+## [1.7.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.2...v1.7.0) (2026-10-28)
+
+### Features
+
+- **guides:** add print and copy link buttons to guide pages ([#46](https://github.com/hmcldryl/betterpuertoprincesa/issues/46)) ([a51521a](https://github.com/hmcldryl/betterpuertoprincesa/commit/a51521a9f7dbdd01c0fa7af7aa9095c69ee11f28))
+
+## [1.6.2](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.1...v1.6.2) (2026-10-28)
+
+### Bug Fixes
+
+- **government:** redirect old template categories to the real pages ([#40](https://github.com/hmcldryl/betterpuertoprincesa/issues/40)) ([c2c25f4](https://github.com/hmcldryl/betterpuertoprincesa/commit/c2c25f4e355cd6ab8328d9da0db8385be1c23484)), closes [#39](https://github.com/hmcldryl/betterpuertoprincesa/issues/39)
+
 ## [1.6.1](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.0...v1.6.1) (2026-10-28)
 
 ### Bug Fixes
