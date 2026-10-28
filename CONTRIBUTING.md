@@ -17,9 +17,9 @@ Thanks for wanting to help. This is a volunteer-built civic transparency portal 
 
 Trunk-based — one long-lived branch:
 
-| Branch | Environment                                          | Purpose                                               |
-| ------ | ---------------------------------------------------- | ----------------------------------------------------- |
-| `main` | Production — https://betterpuertoprincesa.vercel.app | Default branch. All feature/fix branches target this. |
+| Branch | Environment                                      | Purpose                                               |
+| ------ | ------------------------------------------------ | ----------------------------------------------------- |
+| `main` | Production: https://www.betterpuertoprincesa.org | Default branch. All feature/fix branches target this. |
 
 Workflow:
 
@@ -157,9 +157,9 @@ When you do add a real value, cite where it came from — a source note next to 
 
 ## Pull request process
 
-1. Keep the PR to a single feature or fix — see [One feature per pull request](#one-feature-per-pull-request).
+1. Keep the PR to a single feature or fix (see [One feature per pull request](#one-feature-per-pull-request)).
 2. Make sure `npm run lint` and `npm run build` pass locally.
-3. Fill out the PR description — what changed and why, the data-sourcing section if you touched `content/` or `src/data/`, and any related issue. Only tick checklist items you actually did.
+3. Fill out the PR description: what changed and why, the data sourcing section if you touched `content/` or `src/data/`, and any related issue. Only tick checklist items you actually did.
 4. PRs from branches in this repo get an ephemeral Vercel preview URL commented automatically; use it to sanity-check the change live. PRs from forks don't get a preview, and a maintainer has to approve their first CI run.
 5. Wait for review and address feedback.
 
