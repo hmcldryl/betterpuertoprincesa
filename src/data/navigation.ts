@@ -21,10 +21,12 @@ export const mainNavigation: NavigationItem[] = [
       { label: 'Emergency Hotlines', href: '/hotlines' },
       { label: 'Utility Advisories', href: '/advisories' },
       { label: 'Public Markets', href: '/markets' },
+      { label: 'Tricycle Fare', href: '/fare-calculator' },
       ...(servicesData.categories as Category[]).map(category => ({
         label: category.category,
         href: `/services/${category.slug}`,
       })),
+      { label: 'Minimum Wage', href: '/minimum-wage' },
     ],
   },
   {
@@ -47,8 +49,10 @@ export const footerNavigation = {
       title: 'Services',
       links: [
         { label: 'Every service', href: '/services' },
+        { label: 'Minimum Wage', href: '/minimum-wage' },
         { label: 'Utility Advisories', href: '/advisories' },
         { label: 'Public Markets', href: '/markets' },
+        { label: 'Tricycle Fare', href: '/fare-calculator' },
         ...(servicesData.categories as Category[])
           .slice(0, 5)
           .map(category => ({

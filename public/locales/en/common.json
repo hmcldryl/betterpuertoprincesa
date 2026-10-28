@@ -80,7 +80,10 @@
   },
   "document": {
     "loading": "Loading the page…",
-    "notFoundTitle": "We couldn't find that page"
+    "notFoundTitle": "We couldn't find that page",
+    "print": "Print or save as PDF",
+    "share": "Copy link",
+    "linkCopied": "Link copied"
   },
   "statistics": {
     "title": "Population, land, and budget",
