@@ -17,9 +17,9 @@ Thanks for wanting to help. This is a volunteer-built civic transparency portal 
 
 Trunk-based — one long-lived branch:
 
-| Branch | Environment                                      | Purpose                                               |
-| ------ | ------------------------------------------------ | ----------------------------------------------------- |
-| `main` | Production: https://www.betterpuertoprincesa.org | Default branch. All feature/fix branches target this. |
+| Branch | Environment                                  | Purpose                                               |
+| ------ | -------------------------------------------- | ----------------------------------------------------- |
+| `main` | Production: https://betterpuertoprincesa.org | Default branch. All feature/fix branches target this. |
 
 Workflow:
 
