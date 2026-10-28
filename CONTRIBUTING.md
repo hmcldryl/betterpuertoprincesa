@@ -10,7 +10,7 @@ Thanks for wanting to help. This is a volunteer-built civic transparency portal 
 - **`content/**/_.md`+`_.yaml`** for service and government department pages, **`src/data/`\*\* for statistics, news, hotlines, and budget data — no database, no CMS; matches how BetterGov.ph and other BetterLGU sites store data
 - **i18next** (English/Filipino) with translation JSON loaded from `public/locales/`
 - **MapLibre GL** + OpenFreeMap vector tiles (no API key) for the maps, **Open-Meteo** for live weather
-- GitHub Actions → Vercel CLI for CI/CD (`.github/workflows/ci.yml`, `deploy.yml`, `release.yml`)
+- Vercel Git integration for preview and production deploys, GitHub Actions for CI and releases (`.github/workflows/ci.yml`, `release.yml`)
 - Conventional Commits + semantic-release for versioning (see below)
 
 ## Branching model
@@ -24,8 +24,8 @@ Trunk-based — one long-lived branch:
 Workflow:
 
 1. Branch off `main`: `git checkout -b feat/short-description`
-2. Open a PR into `main`. CI (`npm run lint` + `npm run build`) must pass — see `.github/workflows/ci.yml` — and you get an ephemeral Vercel preview URL commented on the PR (`.github/workflows/deploy.yml`).
-3. Merging runs [semantic-release](https://semantic-release.gitbook.io/): bumps the version, writes `CHANGELOG.md`, tags a GitHub Release, and deploys to production (see `.github/workflows/release.yml`).
+2. Open a PR into `main`. CI (`npm run lint` + `npm run build`) must pass — see `.github/workflows/ci.yml` — and Vercel comments a preview URL on the PR.
+3. Merging deploys to production through Vercel, and runs [semantic-release](https://semantic-release.gitbook.io/), which bumps the version, writes `CHANGELOG.md`, and tags a GitHub Release (see `.github/workflows/release.yml`). Vercel skips the release bot's version-bump commit (`ignoreCommand` in `vercel.json`) since it only touches `package.json` and `CHANGELOG.md`.
 
 No manual version bumping — versions derive entirely from commit messages (see below). `main` is a protected branch (PR required, the `lint-and-build` check must pass on an up-to-date branch, no force-pushes or deletion) — a PR is the only way in for contributors. Repository admins can bypass it, which is what lets semantic-release push its version-bump commit.
 
@@ -160,7 +160,7 @@ When you do add a real value, cite where it came from — a source note next to 
 1. Keep the PR to a single feature or fix (see [One feature per pull request](#one-feature-per-pull-request)).
 2. Make sure `npm run lint` and `npm run build` pass locally.
 3. Fill out the PR description: what changed and why, the data sourcing section if you touched `content/` or `src/data/`, and any related issue. Only tick checklist items you actually did.
-4. PRs from branches in this repo get an ephemeral Vercel preview URL commented automatically; use it to sanity-check the change live. PRs from forks don't get a preview, and a maintainer has to approve their first CI run.
+4. Vercel comments a preview URL on every PR; use it to sanity-check the change live. For PRs from forks, a maintainer has to authorize the preview on Vercel and approve the first CI run.
 5. Wait for review and address feedback.
 
 ## Review criteria

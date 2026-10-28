@@ -1,3 +1,9 @@
+## [1.6.2](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.1...v1.6.2) (2026-10-28)
+
+### Bug Fixes
+
+- **government:** redirect old template categories to the real pages ([#40](https://github.com/hmcldryl/betterpuertoprincesa/issues/40)) ([c2c25f4](https://github.com/hmcldryl/betterpuertoprincesa/commit/c2c25f4e355cd6ab8328d9da0db8385be1c23484)), closes [#39](https://github.com/hmcldryl/betterpuertoprincesa/issues/39)
+
 ## [1.6.1](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.6.0...v1.6.1) (2026-10-28)
 
 ### Bug Fixes
