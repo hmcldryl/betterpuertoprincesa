@@ -1,3 +1,9 @@
+## [1.13.0](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.12.3...v1.13.0) (2026-10-30)
+
+### Features
+
+- **volunteer:** link the popup button to the sign-up form ([#55](https://github.com/hmcldryl/betterpuertoprincesa/issues/55)) ([212b257](https://github.com/hmcldryl/betterpuertoprincesa/commit/212b257cb307fa64fe6c87ba51dfd83f46958d75))
+
 ## [1.12.3](https://github.com/hmcldryl/betterpuertoprincesa/compare/v1.12.2...v1.12.3) (2026-10-28)
 
 ### Bug Fixes
