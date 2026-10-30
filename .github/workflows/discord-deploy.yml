@@ -1,0 +1,61 @@
+name: Discord deploy notice
+
+# Discord's GitHub-compatible webhook endpoint (.../github) accepts deployment
+# and deployment_status events but silently drops them, so deploys never show
+# up in the channel. Post Vercel's final deploy result to the plain webhook
+# instead. DISCORD_DEPLOY_WEBHOOK is the webhook URL without the /github suffix.
+on: deployment_status
+
+jobs:
+  notify:
+    # Only Vercel's final states. Skips pending/in_progress, and skips the
+    # status the Production URL workflow adds so each deploy posts once.
+    if: >-
+      contains(fromJSON('["success","failure","error"]'), github.event.deployment_status.state) &&
+      github.event.deployment_status.creator.login == 'vercel[bot]'
+    runs-on: ubuntu-24.04
+    permissions: {}
+    steps:
+      - name: Post to Discord
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_DEPLOY_WEBHOOK }}
+          STATE: ${{ github.event.deployment_status.state }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
+          REF: ${{ github.event.deployment.ref }}
+          SHA: ${{ github.event.deployment.sha }}
+          DEPLOY_URL: ${{ github.event.deployment_status.environment_url }}
+        run: |
+          if [ -z "$WEBHOOK" ]; then
+            echo "DISCORD_DEPLOY_WEBHOOK is not set, skipping."
+            exit 0
+          fi
+
+          if [ "$ENVIRONMENT" = "Production" ] && [ "$STATE" = "success" ]; then
+            DEPLOY_URL=https://betterpuertoprincesa.org
+          fi
+
+          case "$STATE" in
+            success) TITLE="$ENVIRONMENT deploy succeeded"; COLOR=3066993 ;;
+            *)       TITLE="$ENVIRONMENT deploy failed"; COLOR=15158332 ;;
+          esac
+
+          jq -n \
+            --arg title "$TITLE" \
+            --argjson color "$COLOR" \
+            --arg url "$DEPLOY_URL" \
+            --arg ref "$REF" \
+            --arg sha "${SHA:0:7}" \
+            --arg commit "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$SHA" \
+            '{
+              username: "Vercel",
+              embeds: [{
+                title: $title,
+                url: (if $url == "" then null else $url end),
+                color: $color,
+                fields: [
+                  { name: "Branch", value: $ref, inline: true },
+                  { name: "Commit", value: "[\($sha)](\($commit))", inline: true }
+                ]
+              }]
+            }' |
+            curl -sSf -X POST -H "Content-Type: application/json" -d @- "$WEBHOOK"
