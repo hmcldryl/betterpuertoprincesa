@@ -9,7 +9,6 @@ import {
   PenLine,
   X,
 } from 'lucide-react';
-import { footerNavigation } from '../../data/navigation';
 import BalayongBranch from '../ui/BalayongBranch';
 
 // Call for volunteers, shown once per browser shortly after the first page
@@ -27,9 +26,8 @@ const ROLES = [
   { icon: Languages, key: 'translation' },
 ] as const;
 
-const CONTACT_URL =
-  footerNavigation.socialLinks.find(l => l.label === 'Facebook')?.href ??
-  'https://github.com/hmcldryl/betterpuertoprincesa';
+const SIGNUP_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSeVd9sLD8eWBKRZ74cX_UNwWdEQM5dGCP6v-rVBuUFRf4KNOQ/viewform';
 
 export default function VolunteerPopup() {
   const { t } = useTranslation('common');
@@ -161,7 +159,7 @@ export default function VolunteerPopup() {
           </ul>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row-reverse">
             <a
-              href={CONTACT_URL}
+              href={SIGNUP_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setTimeout(dismiss, 150)}
